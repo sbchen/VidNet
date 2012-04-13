@@ -56,7 +56,7 @@
 <div id="panes">
 
 <div>
-<img src="images/1.jpg" alt="VidNet" />				
+<img src="images/1.jpg" width="75" height="75" alt="VidNet" />				
 <h3>Welcome to VidNet</h3>
 <p class="more"> </p>
 		
@@ -66,7 +66,7 @@
 
 	
 <div>
-<img src="images/defaultuser.jpg" alt="VidNet" />	
+<img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" />	
 <h3>User1</h3>
 <p class="more">About User</p>
 		
@@ -74,7 +74,7 @@
 </div>
 	
 <div>   
-<img src="images/defaultuser.jpg" alt="VidNet" />
+<img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" />
 <h3>User2</h3>
 <p class="more">About User</p>
 		
@@ -82,7 +82,7 @@
 </div>
 
 <div>   
-<img src="images/defaultuser.jpg" alt="VidNet" />
+<img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" />
 <h3>User3</h3>
 <p class="more">About User</p>
 		
@@ -90,7 +90,7 @@
 </div>
 
 <div>   
-<img src="images/defaultuser.jpg" alt="VidNet" />
+<img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" />
 <h3>User4</h3>
 <p class="more">About User</p>
 		
