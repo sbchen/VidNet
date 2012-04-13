@@ -41,10 +41,12 @@
 
 <div id="h_navcontainer">
 <ul>
+   <li><a href="Login.jsp">Login</a></li>
    <li><a href="About.jsp">User Page</a></li>
    <li><a href="VideoGallery.jsp">Video Gallery</a></li>
    <li><a href="sign-up.jsp">Sign Up</a></li>
    <li><a href="index.jsp">Home</a></li>
+   
 </ul>
 </div><!-- close h_navcontainer -->
 
@@ -56,7 +58,7 @@
 <div id="panes">
 
 <div>
-<img src="images/1.jpg" width="75" height="75" alt="VidNet" />				
+<img src="images/1.jpg" alt="VidNet" />				
 <h3>Welcome to VidNet</h3>
 <p class="more"> </p>
 		
@@ -66,7 +68,7 @@
 
 	
 <div>
-<img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" />	
+<img src="images/defaultuser.jpg" width="300" height="225" alt="VidNet" />	
 <h3>User1</h3>
 <p class="more">About User</p>
 		
@@ -74,7 +76,7 @@
 </div>
 	
 <div>   
-<img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" />
+<img src="images/defaultuser.jpg" width="300" height="225" alt="VidNet" />
 <h3>User2</h3>
 <p class="more">About User</p>
 		
@@ -82,7 +84,7 @@
 </div>
 
 <div>   
-<img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" />
+<img src="images/defaultuser.jpg" width="300" height="225" alt="VidNet" />
 <h3>User3</h3>
 <p class="more">About User</p>
 		
@@ -90,7 +92,7 @@
 </div>
 
 <div>   
-<img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" />
+<img src="images/defaultuser.jpg" width="300" height="225" alt="VidNet" />
 <h3>User4</h3>
 <p class="more">About User</p>
 		
@@ -106,19 +108,19 @@
 <div id="nav">
 <ul>
 
-<li><a href="#1"><img src="images/defaultuser.jpg" alt="VidNet"/><strong>VidNet</strong>
+<li><a href="#1"><img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet"/><strong>VidNet</strong>
 January 10th 2010</a></li>
 
-<li><a href="#2"><img src="images/defaultuser.jpg" alt="VidNet"/><strong>User1</strong> January 5th 2009</a>
+<li><a href="#2"><img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet"/><strong>User1</strong> January 5th 2009</a>
 </li>
 
-<li><a href="#3"><img src="images/defaultuser.jpg" alt="VidNet" /><strong>User2</strong> January 7th 2010</a>
+<li><a href="#3"><img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" /><strong>User2</strong> January 7th 2010</a>
 </li>
 
-<li><a href="#4"><img src="images/defaultuser.jpg" alt="VidNet" /><strong>User3</strong> January 8th 2012</a>
+<li><a href="#4"><img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" /><strong>User3</strong> January 8th 2012</a>
 </li>
 
-<li><a href="#5"><img src="images/defaultuser.jpg" alt="VidNet" /><strong>User4</strong> January 9th 2011</a>
+<li><a href="#5"><img src="images/defaultuser.jpg" width="75" height="75" alt="VidNet" /><strong>User4</strong> January 9th 2011</a>
 </li>
 
 </ul>

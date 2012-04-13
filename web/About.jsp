@@ -22,6 +22,7 @@
 
 <div id="h_navcontainer">
 <ul>
+   <li><a href="Login.jsp">Login</a></li>
    <li><a href="About.jsp">User Page</a></li>
    <li><a href="VideoGallery.jsp">Video Gallery</a></li>
    <li><a href="sign-up.jsp">Sign Up</a></li>
