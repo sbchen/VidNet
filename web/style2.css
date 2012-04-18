@@ -136,9 +136,25 @@ h3.introduction {margin-bottom: 14px}
 
 #footer_right {width: 350px; float: right;}
 
-#footer_right ul {margin-bottom: 10px}
+/*#footer_right ul {margin-bottom: 10px}*/
+#footer_right ul {float: left; margin-right: 15px; width: 150px; background: #373838; padding: 10px;
+    -moz-border-radius-topleft: 8px;
+	-khtml-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+    -moz-border-radius-topright: 8px;
+	-khtml-border-radius-topright: 8px;
+	-webkit-border-top-right-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-khtml-border-radius-bottomright: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	-moz-border-radius-bottomleft: 8px;
+	-khtml-border-radius-bottomleft: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+}
 
-#footer_right ul li {display: inline; margin-right: 10px;}
+#footer_right li {background: url(images/seperator_footer.png) repeat-x bottom; padding: 5px 0}
+/*#footer_right ul li {display: inline; margin-right: 10px;} */
+#footer_right ul li a {color: #999; text-decoration: none;}
 
 #footer_right img {border: 1px solid #646464; padding: 6px; background: #000000;
     -moz-border-radius-topleft: 5px;

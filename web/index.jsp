@@ -141,56 +141,26 @@ January 10th 2010</a></li>
 <div id="footer">
 
 <div id="footer_left">
-		<ul>
-			<li class="footer_heading"><h4>General</h4></li>
-                </ul>
-                <ul>
-			<li><a href="index.jsp">Home</a></li>
-                </ul>
-			<li><a href="About.jsp">About Us</a></li>
-                <ul>
-			<li><a href="#">Services</a></li>
-                </ul>
-                <ul>
-			<li><a href="About.jsp">Contact Us</a></li>
-		</ul>
-<!--
-		<ul>
-			<li class="footer_heading"><h4>Services</h4></li>
-			<li><a href="#">Photography</a></li>
-			<li><a href="#">Print</a></li>
-			<li><a href="#">Design</a></li>
-			<li><a href="#">Retouch</a></li>
-		</ul>
 		
-		<ul>
-			<li class="footer_heading"><h4>Upcoming</h4></li>
-			<li><a href="#">New Offers</a></li>
-			<li><a href="#">Free Stock Photos</a></li>
-			<li><a href="#">Studio Lightning</a></li>
-			<li class="last"><a href="#">New from Canon</a></li>
-		</ul>
-  -->
+                <ul>
+			<li class="footer_heading"><a href="index.jsp"><h4>Home</h4></a></li>
+                </ul>
+                <ul>
+			<li class="footer_heading"><a href="About.jsp"><h4>About Us</h4></a></li>
+                </ul>
+                <ul>
+                <li class="footer_heading"><a href="#"><h4>Services</h4></a></li>
+                </ul>
+                
  </div>
-        
+     
  <div id="footer_right">
- 
- <ul>
-   <li><img src="photos/footer_thumb1.jpg" width="60" height="60" alt="demo" /></li>
-   <li><img src="photos/footer_thumb2.jpg" width="60" height="60" alt="demo" /></li>
-   <li><img src="photos/footer_thumb3.jpg" width="60" height="60" alt="demo" /></li>
-   <li><img src="photos/footer_thumb1.jpg" width="60" height="60" alt="demo" /></li>
- </ul>
- 
   <ul>
-   <li><img src="photos/footer_thumb3.jpg" width="60" height="60" alt="demo" /></li>
-   <li><img src="photos/footer_thumb1.jpg" width="60" height="60" alt="demo" /></li>
-   <li><img src="photos/footer_thumb2.jpg" width="60" height="60" alt="demo" /></li>
-   <li><img src="photos/footer_thumb1.jpg" width="60" height="60" alt="demo" /></li>
- </ul>
-
+    <li class="footer_heading"><a href="About.jsp"><h4>Contact Us</h4></a></li>
+  </ul>
+        
  </div>
-
+ 
 </div><!-- close footer_bg -->
 </div><!-- close footer -->
 

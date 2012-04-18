@@ -55,22 +55,23 @@
 
 <div id="footer_left">
 		
-    <ul>
-            <li><a href="index.jsp">Home</a></li>
-    </ul>
-            <li><a href="About.jsp">About Us</a></li>
- 		
-              
+                <ul>
+			<li class="footer_heading"><a href="index.jsp"><h4>Home</h4></a></li>
+                </ul>
+                <ul>
+			<li class="footer_heading"><a href="About.jsp"><h4>About Us</h4></a></li>
+                </ul>
+                <ul>
+                <li class="footer_heading"><a href="#"><h4>Services</h4></a></li>
+                </ul>
+                
  </div>
-        
+     
  <div id="footer_right">
- 
-    <ul>
-	<li><a href="About.jsp">Contact Us</a></li>
-    </ul>
-     <ul>
-                <li><a href="#">Services</a></li>
-     </ul>
+  <ul>
+    <li class="footer_heading"><a href="About.jsp"><h4>Contact Us</h4></a></li>
+  </ul>
+        
  </div>
 
 </div><!-- close footer_bg -->
