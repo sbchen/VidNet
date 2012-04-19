@@ -12,14 +12,15 @@
 
 <body>
 
-<%
+    <!--
+<%--
 String Name = request.getParameter(username);
 String Email = request.getParameter(email);
 String Password = request.getParameter(password);
 String PasswordV = request.getParameter(passwordV);
 String Address = request.getParameter(Address);
-%>
-
+--%>
+-->
 <div id="container">
 
 <div id="logo">
