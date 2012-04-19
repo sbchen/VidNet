@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
@@ -128,7 +129,7 @@ root.find("button.next").keydown(function(e) {
 <div id="drawer">Please fill in the empty fields marked with a <samp style="color:red">red</samp> border.</div>
 
 <!-- the form -->
-<form action="#">
+<form action=sign-upConfirm.jsp method=post>
 
 	<div id="wizard">
 
@@ -156,7 +157,7 @@ root.find("button.next").keydown(function(e) {
 						<label>
 							<strong>1.</strong> Enter Your Email Address <span>*</span><br />
 
-							<input type="text" class="text" name="email" />
+							<input type=text name=email class=text  />
 							<em>Your password will be sent to this address. Your address will not made public.</em>
 						</label>
 					</li>
@@ -166,7 +167,7 @@ root.find("button.next").keydown(function(e) {
 						<label>
 							<strong>2.</strong> Pick a username <br />
 
-							<input type="text" class="text" name="username" />
+							<input type=text  name=username class=text />
 							<em>Your preferred username to be used when logging in.</em>
 						</label>
 					</li>
@@ -177,7 +178,7 @@ root.find("button.next").keydown(function(e) {
 						<label>
 
 							<strong>3.</strong> Choose a Password <span>*</span><br />
-							<input type="password" class="text" name="password" />
+							<input type="password" class="text" name=password />
 							<em>Must be at least 8 characters long.</em>
 						</label>
 
@@ -210,7 +211,8 @@ root.find("button.next").keydown(function(e) {
 						<label>
 							<strong>1.</strong> Enter Your Street Address <span>*</span><br />
 
-							<input type="text" class="text" name="email" />
+							<input type="text" class="text" name="email"  />
+                                                        
 							<em><strong>Example</strong>: Random Street 69 A 666</em>
 						</label>
 					</li>
@@ -221,14 +223,14 @@ root.find("button.next").keydown(function(e) {
 						<label>
 
 							<strong>2.</strong> Enter Your Zip Code <span>*</span><br />
-							<input class="text" name="zip" />
+							<input class="text" name="zip" id="zip" />
 							<em>This must be a numeric value</em>
 						</label>
 
 						<label>
 							<strong>3.</strong> and The City <span>*</span>
 
-							<select name="city">
+							<select name="city" id="city">
 								<option value="">-- please select --</option>
 								<option>McAllen</option>
 								<option>Brownsville</option>
@@ -284,7 +286,6 @@ root.find("button.next").keydown(function(e) {
 </div><!-- close page -->
 
 <div id="page_bottom"></div>
-
 
 
 </div><!-- close container -->

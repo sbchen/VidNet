@@ -1,19 +1,24 @@
 <%-- 
-    Document   : About
-    Created on : Apr 13, 2012, 4:03:14 AM
-    Author     : Moy
+    Document   : sign-upConfirm
+    Created on : Apr 19, 2012, 5:12:28 PM
+    Author     : Moises
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 <title>About</title>
 </head>
 
 <body>
+
+<%
+String Name = request.getParameter(username);
+String Email = request.getParameter(email);
+String Password = request.getParameter(password);
+String PasswordV = request.getParameter(passwordV);
+String Address = request.getParameter(Address);
+%>
 
 <div id="container">
 
