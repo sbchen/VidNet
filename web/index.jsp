@@ -36,12 +36,12 @@
 <div id="container">
 
 <div id="logo">
-  <a href="index.html"><img src="images/logo.png" width="136" height="30" alt="logo" /></a>
+  <a href="index.jsp"><img src="images/logo.png" width="136" height="30" alt="logo" /></a>
 </div>
 
 <div id="h_navcontainer">
 <ul>
-   <li><a href="Login.jsp">Login</a></li>
+   <!--<li><a href="Login.jsp">Login</a></li>-->
    <li><a href="About.jsp">User Page</a></li>
    <li><a href="VideoGallery.jsp">Video Gallery</a></li>
    <li><a href="sign-up.jsp">Sign Up</a></li>
@@ -58,8 +58,11 @@
 <div id="panes">
 
 <div>
-<img src="images/1.jpg" alt="VidNet" />				
+<img src="images/VideoSharing.png" alt="VidNet" />				
 <h3>Welcome to VidNet</h3>
+<P>VidNet offers a user friendly online video streaming environment, where user driven content comprises the bulk of the videos, is easily accessible, visible and obtainable from anywhere with Internet access.</p>
+<p>VidNet strives to deliver the highest quality video resolution with no interruption in service or annoying ads. With VidNet, you can save and share your videos with family and friends.</p>
+<p>As a user, you will have access to share videos, comment on friend videos, and send messages to your friends</p>
 <p class="more"> </p>
 		
 <p> </p>

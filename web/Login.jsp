@@ -9,7 +9,7 @@
 <html>
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="style2.css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
 <title></title>
 
 
@@ -25,7 +25,7 @@
 
 <div id="h_navcontainer">
 <ul>
-   <li><a href="Login.jsp">Login</a></li>
+   <!--<li><a href="Login.jsp">Login</a></li>-->
    <li><a href="About.jsp">User Page</a></li>
    <li><a href="VideoGallery.jsp">Video Gallery</a></li>
    <li><a href="sign-up.jsp">Sign Up</a></li>
@@ -40,8 +40,11 @@
 <h1>Sign Up</h1>
 
 <div id="signup_info">
-<h2 style="margin-bottom:10px"> VidNet </h2>
-<p>Some VidNet Info</p>
+<h2 style="margin-bottom:10px"> Welcome to VidNet </h2>
+<p>Please Log in to your account.</p>
+<p>Are you new to VidNet? Join Vidnet and create an account for free.</p>
+<p>Create new VidNet User <a href="sign-up.jsp"> here</a>.</p>
+
 </div>
 
 <!-- twitter style notification bar for validation errors -->

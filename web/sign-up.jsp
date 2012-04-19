@@ -100,7 +100,7 @@ root.find("button.next").keydown(function(e) {
 
 <div id="h_navcontainer">
 <ul>
-   <li><a href="Login.jsp">Login</a></li>
+   <!--<li><a href="Login.jsp">Login</a></li>-->
    <li><a href="About.jsp">User Page</a></li>
    <li><a href="VideoGallery.jsp">Video Gallery</a></li>
    <li><a href="sign-up.jsp">Sign Up</a></li>
@@ -116,7 +116,12 @@ root.find("button.next").keydown(function(e) {
 
 <div id="signup_info">
 <h2 style="margin-bottom:10px">Why sign up?</h2>
-<p>Some VidNet Info</p>
+<P>VidNet offers a user friendly online video streaming environment, where user driven content comprises the bulk of the videos, is easily accessible, visible and obtainable from anywhere with Internet access.</p>
+<p>VidNet strives to deliver the highest quality video resolution with no interruption in service or annoying ads.</p>
+<p>With VidNet, you can save and share your videos with family and friends.</p>
+<p>As a user, you will have access to share videos, comment on friend videos, and send messages to your friends</p>
+<p>Already a user?</p>
+<p>Please <a href="Login.jsp" > log in </a> here.</p>
 </div>
 
 <!-- twitter style notification bar for validation errors -->
