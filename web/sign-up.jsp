@@ -225,9 +225,15 @@ root.find("button.next").keydown(function(e) {
 
 							<select name="city">
 								<option value="">-- please select --</option>
-								<option>Helsinki</option>
-								<option>Berlin</option>
-								<option>New York</option>
+								<option>McAllen</option>
+								<option>Brownsville</option>
+								<option>Mission</option>
+                                                                <option>Austin</option>
+                                                                <option>San Antonio</option>
+                                                                <option>Houston</option>
+                                                                <option>Dallas</option>
+                                                                <option>El Paso</option>
+                                                              
 							</select>
 						</label>
 
@@ -253,9 +259,6 @@ root.find("button.next").keydown(function(e) {
 					<em>You are now a member of VidNet. Thank you!</em>
 				</h2>
 
-                                <!--
-				<img src="http://static.flowplayer.org/img/logo/eye.png" style="margin:30px 0 0 140px" />
-                                -->
                                 <img src="#" style="margin:30px 0 0 140px" />
 
 				<p style="margin-top:30px">
