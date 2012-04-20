@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package com.vidnet.db;
+
 import java.sql.Timestamp;
 
 /**
