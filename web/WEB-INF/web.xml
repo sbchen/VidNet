@@ -2,11 +2,11 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
         <servlet-name>signup</servlet-name>
-        <servlet-class>com.vidnet.signupServlet.signup</servlet-class>
+        <servlet-class>com.vidnet.servlet.signup.signup</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>login</servlet-name>
-        <servlet-class>com.vidnet.loginServlet.login</servlet-class>
+        <servlet-class>com.vidnet.servlet.login.login</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
