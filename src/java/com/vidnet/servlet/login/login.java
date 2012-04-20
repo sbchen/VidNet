@@ -61,10 +61,16 @@ public class login extends HttpServlet {
         
         if (tempUser != null) {
             session.setAttribute("user", tempUser);
+            session.setAttribute("userid", "" + tempUser.getUserID());
+            session.setAttribute("username", tempUser.getUsername());
+            session.setAttribute("email", tempUser.getEmail());
             session.setAttribute("Authenticated", true);
             requestDispatch.forward(request, response);
         } else {
             session.setAttribute("user", null);
+            session.setAttribute("userid", -1);
+            session.setAttribute("username", " ");
+            session.setAttribute("email", " ");
             session.setAttribute("Authenticated", false);
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();

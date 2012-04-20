@@ -52,7 +52,6 @@ public class UserModel {
             
             //close connection
             dbconnection.close();
-            
         } catch (Exception e) {
             return null;
         }

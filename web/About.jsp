@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    
+<%String userid = (String) session.getAttribute("userid"); %>
+<%String username = (String) session.getAttribute("username"); %>
+<%String email = (String) session.getAttribute("email"); %>
 
 <div id="container">
 
@@ -35,9 +39,9 @@
 
 <div id="page">
 
-<h1>User's Page</h1>
+<h1><%=username%>'s Page</h1>
 
-<h2>User's Name</h2>
+<h2><%=username%></h2>
 <p></p>
 <h2>Messages</h2>
 <p></p>

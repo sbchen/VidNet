@@ -67,10 +67,15 @@ public class signup extends HttpServlet {
         
         if (tempUser != null) {
             session.setAttribute("user", tempUser);
-            session.setAttribute("Authenticated", true);
+            session.setAttribute("userid", "" + tempUser.getUserID());
+            session.setAttribute("username", tempUser.getUsername());
+            session.setAttribute("email", tempUser.getEmail());
             requestDispatch.forward(request, response);
         } else {
             session.setAttribute("user", null);
+            session.setAttribute("userid", -1);
+            session.setAttribute("username", " ");
+            session.setAttribute("email", " ");
             session.setAttribute("Authenticated", false);
             PrintWriter out = response.getWriter();
             out.println("<h1>Sign up information is invalid!</h1>");
