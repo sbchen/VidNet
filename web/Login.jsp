@@ -36,7 +36,7 @@
 
 <div id="page">
 
-<h1>Sign Up</h1>
+<h1>Login</h1>
 
 <div id="signup_info">
 <h2 style="margin-bottom:10px"> Welcome to VidNet </h2>
