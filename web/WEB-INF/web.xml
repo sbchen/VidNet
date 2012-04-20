@@ -3,6 +3,10 @@
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>com.vidnet.servlet.filters.AuthFilter</filter-class>
+        <init-param>
+            <param-name>login_page</param-name>
+            <param-value>/Login.jsp</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>

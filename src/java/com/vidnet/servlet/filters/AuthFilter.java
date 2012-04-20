@@ -4,6 +4,8 @@
  */
 package com.vidnet.servlet.filters;
 
+import com.vidnet.db.User;
+
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -11,9 +13,12 @@ import java.io.StringWriter;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -101,7 +106,30 @@ public class AuthFilter implements Filter {
         
         Throwable problem = null;
         try {
-            chain.doFilter(request, response);
+            boolean auth = false;
+            
+            if (request instanceof HttpServletRequest) {
+                HttpSession session = ((HttpServletRequest)request).getSession(false);
+                if (session != null) {
+                    User user = (User) session.getAttribute("user");
+                    if (user != null) {
+                        auth = true;
+                    }
+                }
+            }
+            
+            if (auth) {
+                chain.doFilter(request, response);
+                return;
+            } else if (filterConfig != null) {
+                String login_page = filterConfig.getInitParameter("login_page");
+                if (login_page != null) {
+                    filterConfig.getServletContext().getRequestDispatcher(login_page).forward(request, response);
+                    return;
+                }
+            }
+            
+            throw new ServletException("Unauthorized access, unable to forward to login page");
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then
