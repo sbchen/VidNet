@@ -129,7 +129,7 @@ root.find("button.next").keydown(function(e) {
 <div id="drawer">Please fill in the empty fields marked with a <samp style="color:red">red</samp> border.</div>
 
 <!-- the form -->
-<form action=sign-upConfirm.jsp method=post>
+<form action="signup" method="post">
 
 	<div id="wizard">
 
@@ -269,7 +269,10 @@ root.find("button.next").keydown(function(e) {
                                 <img src="#" style="margin:30px 0 0 140px" />
 
 				<p style="margin-top:30px">
+                                <li class="clearfix">
 					<button type="button" class="prev">&laquo; Back</button>
+                                        <input type="submit" value="Finalize!">
+                                </li>
 				</p>
 
 			</div>
