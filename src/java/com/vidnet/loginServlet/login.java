@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vidnet.login;
+package com.vidnet.loginServlet;
 
 import com.vidnet.db.User;
 import com.vidnet.db.UserModel;

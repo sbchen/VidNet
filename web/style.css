@@ -527,3 +527,14 @@ h3.introduction {margin-bottom: 14px}
 	color: #ebebeb;
 	font-size: 11px;
 }
+
+#login-btn {
+    width: 103px;
+    height: 42px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent url(images/login-btn.png) no-repeat center top;
+    text-indent: -1000em;
+    cursor: pointer;
+}
