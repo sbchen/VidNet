@@ -61,7 +61,7 @@ public class login extends HttpServlet {
         
         if (tempUser != null) {
             session.setAttribute("user", tempUser);
-            session.setAttribute("userid", "" + tempUser.getUserID());
+            session.setAttribute("userid", tempUser.getUserID());
             session.setAttribute("username", tempUser.getUsername());
             session.setAttribute("email", tempUser.getEmail());
             session.setAttribute("Authenticated", true);

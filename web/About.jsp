@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    
-<%String userid = (String) session.getAttribute("userid"); %>
+
+
 <%String username = (String) session.getAttribute("username"); %>
 <%String email = (String) session.getAttribute("email"); %>
 

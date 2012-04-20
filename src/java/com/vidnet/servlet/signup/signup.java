@@ -67,7 +67,7 @@ public class signup extends HttpServlet {
         
         if (tempUser != null) {
             session.setAttribute("user", tempUser);
-            session.setAttribute("userid", "" + tempUser.getUserID());
+            session.setAttribute("userid", tempUser.getUserID());
             session.setAttribute("username", tempUser.getUsername());
             session.setAttribute("email", tempUser.getEmail());
             requestDispatch.forward(request, response);
