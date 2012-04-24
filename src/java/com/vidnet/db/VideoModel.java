@@ -4,11 +4,7 @@
  */
 package com.vidnet.db;
 
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -30,13 +26,39 @@ public class VideoModel {
     String query;
     LinkedList<Video> vidList;
     
-    //get videos posted by user
-    public LinkedList<Video> getVideos(int userid) {
-        query = "SELECT * from Video WHERE userid = " + userid + ";";
+    //get information of videoid
+    public Video getInfo(int videoid) {
+        query = "SELECT * FROM Video WHERE VideoID = " + videoid + ";";
         
         try {
             //use mysql jdbc driver
-            Class.forName("com.msql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            //make the connection
+            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            
+            //get statement from connection
+            dbstatement = dbconnection.createStatement();
+            
+            //query the database for the list of user videos
+            dbresults = dbstatement.executeQuery(query);
+            
+            dbresults.next();
+            tempVid = new Video(dbresults.getInt(1), dbresults.getString(2), dbresults.getString(3), dbresults.getString(4), dbresults.getTimestamp(5), dbresults.getInt(6));
+                        
+            return tempVid;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //get videos posted by user
+    public LinkedList<Video> getVideos(int userid) {
+        query = "SELECT * FROM Video WHERE UserID = " + userid + ";";
+        
+        try {
+            //use mysql jdbc driver
+            Class.forName("com.mysql.jdbc.Driver");
             
             //make the connection
             dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
@@ -53,10 +75,11 @@ public class VideoModel {
                 tempVid = new Video(dbresults.getInt(1), dbresults.getString(2), dbresults.getString(3), dbresults.getString(4), dbresults.getTimestamp(5), dbresults.getInt(6));
                 vidList.add(tempVid);
             }
+            
+            return vidList;
         } catch (Exception e) {
             return null;
         }
-        return vidList;
     }
     
     //overloaded getVideos using user object
@@ -64,14 +87,49 @@ public class VideoModel {
         return getVideos(user.getUserID());
     }
     
-    //video upload method
-    public Video Upload(String title, String desc, String loc, int userid) {
-        int index;
-        query = "SELECT MAX(VideoID) from Video";
+    //get random list of videos of size num
+    public LinkedList<Video> getRandVideos(int num) {
+        query = "SELECT * FROM Video ORDER BY RAND() LIMIT " + num + ";";
         
         try {
             //use mysql jdbc driver
-            Class.forName("com.msql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            //make the connection
+            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            
+            //get statement from connection
+            dbstatement = dbconnection.createStatement();
+            
+            //query the database for the list of user videos
+            dbresults = dbstatement.executeQuery(query);
+            
+            //initialize vidList
+            vidList = new LinkedList<Video>();
+            while (dbresults.next()) {
+                tempVid = new Video(dbresults.getInt(1), dbresults.getString(2), dbresults.getString(3), dbresults.getString(4), dbresults.getTimestamp(5), dbresults.getInt(6));
+                vidList.add(tempVid);
+            }
+            
+            return vidList;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //overloaded getVideos using user object
+    public LinkedList<Video> getRandVideos() {
+        return getVideos(5);
+    }
+    
+    //video upload method
+    public Video Upload(String title, String desc, String loc, int userid) {
+        int index;
+        query = "SELECT MAX(VideoID) FROM Video;";
+        
+        try {
+            //use mysql jdbc driver
+            Class.forName("com.mysql.jdbc.Driver");
             
             //make the connection
             dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
@@ -94,15 +152,6 @@ public class VideoModel {
             tempVid = new Video(index, title, desc, loc, now, userid);
             query = "INSERT INTO Video (VideoID, Title, Description, Location, Posted, UserID) VALUES (" +
                     index + ", '" + title + "', '" + desc + "', '" + loc + "', '" + now.toString() + "', " + userid + ");";
-            
-            //use mysql jdbc driver
-            Class.forName("com.mysql.jdbc.Driver");
-
-            //make the connection
-            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
-
-            //get statement
-            dbstatement = dbconnection.createStatement();
 
             //execute the query
             dbstatement.executeUpdate(query);

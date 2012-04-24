@@ -4,11 +4,7 @@
  */
 package com.vidnet.db;
 
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.Date;
 
 /**
@@ -71,7 +67,7 @@ public class UserModel {
     //user signup method. should return the user object if successful otherwise null
     public User Signup(String newUsername, String newPassword, String newEmail) {
         int index;
-        query = "SELECT MAX(UserID) from USER;";
+        query = "SELECT MAX(UserID) FROM USER;";
         
         try {
             //use mysql jdbc driver
@@ -96,15 +92,6 @@ public class UserModel {
             query = "SELECT * FROM USERS WHERE username = '" + newUsername.toString() + "';";
             
             try {
-                //use mysql jdbc driver
-                Class.forName("com.mysql.jdbc.Driver");
-
-                //make the connection
-                dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
-
-                //get statement from connection
-                dbstatement = dbconnection.createStatement();
-
                 //query the database for the user
                 dbresults = dbstatement.executeQuery(query);
 

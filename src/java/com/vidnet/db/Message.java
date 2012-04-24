@@ -19,7 +19,7 @@ public class Message {
         return messageid;
     }
     
-    public String getMsgContet() {
+    public String getMsgContent() {
         return msgcontent;
     }
     
