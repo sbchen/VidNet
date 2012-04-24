@@ -120,7 +120,7 @@ public class UserModel {
                         index + ", '" + newUsername.toString() + "', '" + newPassword.toString() + "', '" +
                         newEmail.toString() + "', '" + now.toString() + "');";
                 //try {
-                //use postgres jdbc driver
+                //use mysql jdbc driver
                 Class.forName("com.mysql.jdbc.Driver");
 
                 //make the connection
@@ -130,12 +130,12 @@ public class UserModel {
                 dbstatement = dbconnection.createStatement();
 
                 //execute the query
-                index = dbstatement.executeUpdate(query);
+                dbstatement.executeUpdate(query);
 
                 //close connection
                 dbconnection.close();
 
-                return new User(index, newUsername, newPassword, newEmail);
+                return tempUser;
             }
         } catch(Exception e) {
             return null;
