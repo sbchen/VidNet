@@ -263,7 +263,7 @@ root.find("button.next").keydown(function(e) {
 				<h2>
 					<strong>Step 3: </strong> Congratulations! <b></b>
 
-					<em>You are now a member of VidNet. Thank you!</em>
+					<em>You are almost member of VidNet! Click finalize when you are ready to proceed.</em>
 				</h2>
 
                                 <img src="#" style="margin:30px 0 0 140px" />
