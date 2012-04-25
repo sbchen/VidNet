@@ -122,6 +122,37 @@ public class VideoModel {
         return getVideos(5);
     }
     
+    //get next videoID
+    public int NextVideoID() {
+        int index;
+        query = "SELECT MAX(VideoID) FROM Video;";
+        
+        try {
+            //use mysql jdbc driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            //make the connection
+            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            
+            //get statement from connection
+            dbstatement = dbconnection.createStatement();
+            
+            //query the database for the max videoid
+            dbresults = dbstatement.executeQuery(query);
+            
+            //extract the largest videoid
+            if (dbresults.next()) {
+                index = dbresults.getInt(1) + 1;
+            } else {
+                index = 2000;
+            }
+        } catch (Exception e) {
+            index = 2000;
+        }
+        
+        return index;
+    }
+    
     //video upload method
     public Video Upload(String title, String desc, String loc, int userid) {
         int index;
@@ -168,5 +199,35 @@ public class VideoModel {
     //overloaded upload method
     public Video Upload(Video newVid) {
         return Upload(newVid.getTitle(), newVid.getDescription(), newVid.getLocation(), newVid.getUserID());
+    }
+    
+    //overloaded upload method with videoid parameter
+    public Video Upload(int videoid, String title, String desc, String loc, int userid) {
+        Date today = new Date();
+        Timestamp now = new Timestamp(today.getTime());
+        tempVid = new Video(videoid, title, desc, loc, now, userid);
+        query = "INSERT INTO Video (VideoID, Title, Description, Location, Posted, UserID) VALUES (" +
+                videoid + ", '" + title + "', '" + desc + "', '" + loc + "', '" + now.toString() + "', " + userid + ");";
+        
+        try {
+            //use mysql jdbc driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            //make the connection
+            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            
+            //get statement from connection
+            dbstatement = dbconnection.createStatement();
+            
+            //execute the query
+            dbstatement.executeUpdate(query);
+            
+            //close connection
+            dbconnection.close();
+            
+            return tempVid;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

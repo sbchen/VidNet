@@ -4,6 +4,7 @@
     Author     : Moy
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -40,6 +41,15 @@
 <div id="page">
 
 <h1><%=username%>'s Page</h1>
+
+<h3>Video Upload</h3>
+Select video to upload: <br/>
+<form action="VidUploadServlet" method="post" enctype="multipart/form-data">
+    <input type="file" accept="video/mp4" name="vidFile" />
+    <br />
+    <input type="submit" value="Upload!" />
+</form>
+<br />
 
 <h2><%=username%></h2>
 <p></p>
