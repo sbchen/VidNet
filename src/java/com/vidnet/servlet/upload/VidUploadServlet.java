@@ -70,13 +70,17 @@ public class VidUploadServlet extends HttpServlet {
                 
                 //process the uploaded file items
                 Iterator i = fileItems.iterator();
+                FileItem fi;
                 
                 while (i.hasNext()) {
-                    FileItem fi = (FileItem)i.next();
+                    fi = (FileItem)i.next();
                     if (!fi.isFormField()) {
                         filePath += user.getUsername() + "\\";
                         nextVideoID = videoModel.NextVideoID();
-                        String fileName = user.getUsername() + ;
+                        String fileName = user.getUsername() + nextVideoID;
+                        
+                        file = new File(filePath + fileName);
+                        fi.write(file);
                     }
                 }
                 
