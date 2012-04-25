@@ -49,12 +49,14 @@ Select video to upload:
 <br />
 <br />
 
-<form action="VidUploadServlet" method="get" enctype="multipart/form-data">
+<form action="VidUploadServlet" method="post" enctype="multipart/form-data">
+    <div id="upload-input-name">Title: </div><div id="upload-input-field"><input type="text" name="title" class="text" size="25"/></div>
+    <div id="upload-input-areaname">Description: </div><div id="upload-input-area"><textarea name="desc" rows="4"></textarea></div>
+    <br />
+    
     <input type="file" accept="video/mp4" name="vidFile" />
     <br />
     <br />
-    <div id="upload-input-name">Title: </div><div id="upload-input-field"><input type="text" name="title" class="text" size="25"/></div>
-    <div id="upload-input-areaname">Description: </div><div id="upload-input-area"><textarea name="desc" rows="4"></textarea></div>
     <input type="submit" value="Upload!" />
 </form>
 <br />

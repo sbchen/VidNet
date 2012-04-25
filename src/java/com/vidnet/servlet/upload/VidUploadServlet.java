@@ -44,12 +44,6 @@ public class VidUploadServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String dest = "/About.jsp";
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(dest);
-        HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("user");
-        VideoModel videoModel = new VideoModel();
-        
         File file;
         int nextVideoID;
         int maxFileSize = 100000 * 1024;
@@ -57,6 +51,12 @@ public class VidUploadServlet extends HttpServlet {
         String filePath = getInitParameter("diskpath");
         String title = request.getParameter("title");
         String desc = request.getParameter("desc");
+        String dest = "/About.jsp";
+        
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(dest);
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("user");
+        VideoModel videoModel = new VideoModel();
         
         //Verify the content type
         String contentType = request.getContentType();
@@ -78,22 +78,24 @@ public class VidUploadServlet extends HttpServlet {
                 //process the uploaded file items
                 Iterator i = fileItems.iterator();
                 FileItem fi;
+                String fieldName;
+                String fileName;
+                
+                //set the filepath
+                filePath += user.getUsername() + "\\";
+                
+                //set the filename
+                nextVideoID = videoModel.NextVideoID();
+                fileName = user.getUsername() + nextVideoID;
                 
                 while (i.hasNext()) {
                     fi = (FileItem)i.next();
                     if (!fi.isFormField()) {
-                        //set the filepath
-                        filePath += user.getUsername() + "\\";
-                        
                         //check if directory exists. if it doesn't, make the directory
                         file = new File(filePath);
                         if (!file.exists()) {
                             file.mkdirs();
                         }
-                        
-                        //set the filename
-                        nextVideoID = videoModel.NextVideoID();
-                        String fileName = user.getUsername() + nextVideoID;
                         
                         //write the file
                         file = new File(filePath + fileName);
@@ -101,6 +103,13 @@ public class VidUploadServlet extends HttpServlet {
                         
                         //store file in the database
                         videoModel.Upload(nextVideoID, title, desc, filePath + fileName, user.getUserID());
+                    } else {
+                        fieldName = fi.getFieldName();
+                        if (fieldName.equals("title")) {
+                            title = fi.getString();
+                        } else if (fieldName.equals("desc")) {
+                            desc = fi.getString();
+                        }
                     }
                 }
                 
