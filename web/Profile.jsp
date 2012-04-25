@@ -45,26 +45,50 @@
 <h2>Welcome <%=username%>!</h2>
 <br/>
 
-Select video to upload:
-<br />
-<br />
+<table>
+    <tr>
+        
+        <td>
+            Select video to upload:
+            <br />
+            <br />
 
-<form action="VidUploadServlet" method="post" enctype="multipart/form-data">
-    <div id="upload-input-name">Title: </div><div id="upload-input-field"><input type="text" name="title" class="text" size="25"/></div>
-    <div id="upload-input-areaname">Description: </div><div id="upload-input-area"><textarea name="desc" rows="4"></textarea></div>
-    <br />
-    
-    <input type="file" accept="video/mp4" name="vidFile" />
-    <br />
-    <br />
-    <input type="submit" value="Upload!" />
-</form>
+            <form action="VidUploadServlet" method="post" enctype="multipart/form-data">
+                <div id="upload-input-name">Title: </div><div id="upload-input-field"><input type="text" name="title" class="text" size="25" /></div>
+                <div id="upload-input-areaname">Description: </div><div id="upload-input-area"><textarea name="desc" rows="4"></textarea></div>
+                <br />
+
+                <input type="file" accept="video/mp4" name="vidFile" />
+                <br />
+                <br />
+                <input type="submit" value="Upload!" />
+            </form>
+        </td>
+        
+        <td>
+            Send Messages
+            <br />
+            <br />
+            
+            <form action="SendMsgServlet" method="post">
+                <div id="msg-input-name">Send to Username: </div><div id="msg-input-field"><input type="text" name="recUsername" class="text" size="25" /></div>
+                <div id="msg-input-areaname">Message: </div><div id="msg-input-area"><textarea name="msg" rows="4"></textarea></div>
+                <br />
+                <input type="submit" value="Message!" />
+            </form>
+        </td>
+    </tr>
+</table>
 <br />
 
 <h2>Messages</h2>
 <p></p>
 <h2>Videos</h2>
-<p></p>
+<br />
+
+<%--iterate through list of videos--%>
+
+<br />
 <div style="clear:both"></div>
 </div><!-- close page -->
 
