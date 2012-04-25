@@ -6,6 +6,7 @@ package com.vidnet.servlet.signup;
 
 import com.vidnet.db.User;
 import com.vidnet.db.UserModel;
+import com.vidnet.db.VideoModel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,6 +42,7 @@ public class signup extends HttpServlet {
     
     //models with business functions
     UserModel userModel;
+    VideoModel videoModel;
     
     //other helpers
     RequestDispatcher requestDispatch;
@@ -66,16 +68,21 @@ public class signup extends HttpServlet {
         tempUser = userModel.Signup(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"));
         
         if (tempUser != null) {
+            videoModel = new VideoModel();
+            
             session.setAttribute("user", tempUser);
             session.setAttribute("userid", tempUser.getUserID());
             session.setAttribute("username", tempUser.getUsername());
             session.setAttribute("email", tempUser.getEmail());
+            session.setAttribute("userVidList", videoModel.getVideos(tempUser));
+            session.setAttribute("Authenticated", true);
             requestDispatch.forward(request, response);
         } else {
             session.setAttribute("user", null);
             session.setAttribute("userid", -1);
             session.setAttribute("username", " ");
             session.setAttribute("email", " ");
+            session.setAttribute("userVidList", null);
             session.setAttribute("Authenticated", false);
             PrintWriter out = response.getWriter();
             out.println("<h1>Sign up information is invalid!</h1>");

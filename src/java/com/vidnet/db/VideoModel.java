@@ -54,7 +54,7 @@ public class VideoModel {
     
     //get videos posted by user
     public LinkedList<Video> getVideos(int userid) {
-        query = "SELECT * FROM Video WHERE UserID = " + userid + ";";
+        query = "SELECT * FROM Video WHERE UserID = " + userid + " ORDER BY VideoID DESC;";
         
         try {
             //use mysql jdbc driver
