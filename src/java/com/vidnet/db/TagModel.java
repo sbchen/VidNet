@@ -28,8 +28,43 @@ public class TagModel {
     String query;
     LinkedList<Tag> tagList;
     
+    //get all tags of a video
+    public LinkedList<Tag> getTagList(int videoid) {
+        query = "SELECT * FROM Tag WHERE VideoID = " + videoid + ";";
+        
+        try {
+            //use mysql jdbc driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            //make the connection
+            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            
+            //get statement from connection
+            dbstatement = dbconnection.createStatement();
+            
+            //query the database for the list of tagged videos
+            dbresults = dbstatement.executeQuery(query);
+            
+            //initialize tagList
+            tagList = new LinkedList<Tag>();
+            while (dbresults.next()) {
+                tempTag = new Tag(dbresults.getInt(1), dbresults.getString(2), dbresults.getInt(3));
+                tagList.add(tempTag);
+            }
+            
+            return tagList;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    //overloaded getTagged method
+    public LinkedList<Tag> getTagList(Tag tag) {
+        return getTagList(tag.getVideoID());
+    }
+    
     //get videos that are tagged
-    public LinkedList<Tag> getTagged(String tag) {
+    public LinkedList<Tag> getTaggedVideos(String tag) {
         query = "SELECT * FROM Tag WHERE TagName = '" + tag + "';";
         
         try {
@@ -59,8 +94,8 @@ public class TagModel {
     }
     
     //overloaded getTagged method
-    public LinkedList<Tag> getTagged(Tag tag) {
-        return getTagged(tag.getTagName());
+    public LinkedList<Tag> getTaggedVideos(Tag tag) {
+        return getTaggedVideos(tag.getTagName());
     }
     
     //tag a video

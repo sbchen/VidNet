@@ -42,17 +42,23 @@
 
 <h1><%=username%>'s Page</h1>
 
-<h3>Video Upload</h3>
-Select video to upload: <br/>
-<form action="VidUploadServlet" method="post" enctype="multipart/form-data">
+<h2>Welcome <%=username%>!</h2>
+<br/>
+
+Select video to upload:
+<br />
+<br />
+
+<form action="VidUploadServlet" method="get" enctype="multipart/form-data">
     <input type="file" accept="video/mp4" name="vidFile" />
     <br />
+    <br />
+    <div id="upload-input-name">Title: </div><div id="upload-input-field"><input type="text" name="title" class="text" size="25"/></div>
+    <div id="upload-input-areaname">Description: </div><div id="upload-input-area"><textarea name="desc" rows="4"></textarea></div>
     <input type="submit" value="Upload!" />
 </form>
 <br />
 
-<h2><%=username%></h2>
-<p></p>
 <h2>Messages</h2>
 <p></p>
 <h2>Videos</h2>

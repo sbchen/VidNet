@@ -5,12 +5,15 @@
 package com.vidnet.servlet.upload;
 
 import com.vidnet.db.User;
+import com.vidnet.db.Video;
 import com.vidnet.db.VideoModel;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,16 +43,20 @@ public class VidUploadServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        File file;
-        int maxFileSize = 5000 * 1024;
-        int maxMemSize = 5000 * 1024;
-        ServletContext context = getServletContext();
-        String filePath = context.getInitParameter("diskpath");
         
+        String dest = "/About.jsp";
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(dest);
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         VideoModel videoModel = new VideoModel();
+        
+        File file;
         int nextVideoID;
+        int maxFileSize = 100000 * 1024;
+        int maxMemSize = 100000 * 1024;
+        String filePath = getInitParameter("diskpath");
+        String title = request.getParameter("title");
+        String desc = request.getParameter("desc");
         
         //Verify the content type
         String contentType = request.getContentType();
@@ -91,11 +98,19 @@ public class VidUploadServlet extends HttpServlet {
                         //write the file
                         file = new File(filePath + fileName);
                         fi.write(file);
+                        
+                        //store file in the database
+                        videoModel.Upload(nextVideoID, title, desc, filePath + fileName, user.getUserID());
                     }
                 }
                 
-            } catch (Exception e) {
+                LinkedList<Video> userVidList = videoModel.getVideos(user);
+                session.setAttribute("userVidList", userVidList);
+                rd.forward(request, response);
                 
+            } catch (Exception e) {
+                System.out.println(e);
+                e.printStackTrace();
             }
         }
 //        response.setContentType("text/html;charset=UTF-8");

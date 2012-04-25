@@ -27,6 +27,10 @@
             <param-name>diskpath</param-name>
             <param-value>C:\VidNet\Uploads\</param-value>
         </init-param>
+        <init-param>
+            <param-name>test</param-name>
+            <param-value>test</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
