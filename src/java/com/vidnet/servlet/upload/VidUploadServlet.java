@@ -75,10 +75,20 @@ public class VidUploadServlet extends HttpServlet {
                 while (i.hasNext()) {
                     fi = (FileItem)i.next();
                     if (!fi.isFormField()) {
+                        //set the filepath
                         filePath += user.getUsername() + "\\";
+                        
+                        //check if directory exists. if it doesn't, make the directory
+                        file = new File(filePath);
+                        if (!file.exists()) {
+                            file.mkdirs();
+                        }
+                        
+                        //set the filename
                         nextVideoID = videoModel.NextVideoID();
                         String fileName = user.getUsername() + nextVideoID;
                         
+                        //write the file
                         file = new File(filePath + fileName);
                         fi.write(file);
                     }
