@@ -44,7 +44,7 @@ public class login extends HttpServlet {
     
     //other helpers
     RequestDispatcher requestDispatch;
-    String dest = "/About.jsp";
+    String dest = "/Profile.jsp";
     int tempUserID;
     
     //session

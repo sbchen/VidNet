@@ -51,7 +51,7 @@ public class VidUploadServlet extends HttpServlet {
         String filePath = getInitParameter("diskpath");
         String title = request.getParameter("title");
         String desc = request.getParameter("desc");
-        String dest = "/About.jsp";
+        String dest = "/Profile.jsp";
         
         RequestDispatcher rd = getServletContext().getRequestDispatcher(dest);
         HttpSession session = request.getSession();

@@ -10,7 +10,7 @@
     </filter>
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
-        <url-pattern>/About.jsp</url-pattern>
+        <url-pattern>/Profile.jsp</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>signup</servlet-name>

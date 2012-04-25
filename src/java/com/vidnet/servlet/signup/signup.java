@@ -35,7 +35,7 @@ public class signup extends HttpServlet {
      */
     
     //constants
-    String dest = "/About.jsp";
+    String dest = "/Profile.jsp";
     
     //temporary working variables
     User tempUser;
