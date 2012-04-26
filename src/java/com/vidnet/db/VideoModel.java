@@ -21,10 +21,41 @@ public class VideoModel {
     Statement dbstatement;
     ResultSet dbresults;
     
+    TagModel tagModel;
+    
     //temporary working variables
     Video tempVid;
+    VideoContainer tempVidContainer;
     String query;
     LinkedList<Video> vidList;
+    
+    //get all information including tags of video
+    public VideoContainer getAllInfo(int videoid) {
+        query = "SELECT V.VideoID, V.Title, V.Description, V.Location, V.Posted, V.UserID, U.Username FROM Video V JOIN User U ON V.UserID = U.UserID WHERE V.VideoID = " + videoid + ";";
+        
+        try {
+            //use mysql jdbc driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            //make the connection
+            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            
+            //get statement from connection
+            dbstatement = dbconnection.createStatement();
+            
+            //query the database for the list of user videos
+            dbresults = dbstatement.executeQuery(query);
+            
+            dbresults.next();
+            tempVidContainer = new VideoContainer(dbresults.getInt(1), dbresults.getString(2), dbresults.getString(3), dbresults.getString(4), dbresults.getTimestamp(5), dbresults.getInt(6), dbresults.getString(7));
+            
+            //tempVidContainer.setTags(tagModel.getTagList(videoid));
+            
+            return tempVidContainer;
+        } catch (Exception e) {
+            return null;
+        }
+    }
     
     //get information of videoid
     public Video getInfo(int videoid) {

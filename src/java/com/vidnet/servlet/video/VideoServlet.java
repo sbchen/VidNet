@@ -2,13 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vidnet.servlet.signup;
+package com.vidnet.servlet.video;
 
-import com.vidnet.db.MessageModel;
-import com.vidnet.db.User;
-import com.vidnet.db.UserModel;
 import com.vidnet.db.VideoModel;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -22,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author SC
  */
-public class signup extends HttpServlet {
+public class VideoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -34,66 +30,35 @@ public class signup extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    //constants
-    String dest = "/Profile.jsp";
-//    String dest = "/login";
-    
-    //temporary working variables
-    User tempUser;
-    
-    //models with business functions
-    UserModel userModel;
-    VideoModel videoModel;
-    MessageModel msgModel;
-    
-    //other helpers
-    RequestDispatcher requestDispatch;
-    int tempIndex;
-    String tempStr;
-    
-    //session
-    HttpSession session;
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //initialize userModel
-        userModel = new UserModel();
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         
-        //retrieve session
-        session = request.getSession();
+        String dest = "/VideoPage.jsp";
+        int videoid = 0;
         
-        //intialize RequestDispatcher
-        requestDispatch = getServletContext().getRequestDispatcher(dest);
+        VideoModel videoModel;
         
-        //attemp to sign up
-        tempUser = userModel.Signup(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"));
+        HttpSession session;
+        RequestDispatcher rd;
         
-        if (tempUser != null) {
-            
-//            dest += "?email=" + tempUser.getEmail() + "&pass=" + tempUser.getPassword();
-            
-            videoModel = new VideoModel();
-            
-            session.setAttribute("user", tempUser);
-            session.setAttribute("userid", tempUser.getUserID());
-            session.setAttribute("username", tempUser.getUsername());
-            session.setAttribute("email", tempUser.getEmail());
-            session.setAttribute("Authenticated", true);
-            requestDispatch.forward(request, response);
+        session = request.getSession(false);
+        rd = getServletContext().getRequestDispatcher(dest);
+        
+        if (request.getParameter("videoid") != null) {
+            videoid = Integer.parseInt(request.getParameter("videoid"));
         } else {
-            session.setAttribute("user", null);
-            session.setAttribute("userid", -1);
-            session.setAttribute("username", "");
-            session.setAttribute("email", "");
-            session.setAttribute("userVidList", null);
-            session.setAttribute("userMsgList", null);
-            session.setAttribute("Authenticated", false);
-            PrintWriter out = response.getWriter();
-            out.println("<h1>Sign up information is invalid!</h1>");
-            out.close();
+            out.write("video does not exist!");
         }
+        
+        if (videoid != 0) {
+            videoModel = new VideoModel();
+            session.setAttribute("videoInfo", videoModel.getAllInfo(videoid));
+        }
+        
+        rd.forward(request, response);
         
 //        response.setContentType("text/html;charset=UTF-8");
 //        PrintWriter out = response.getWriter();
@@ -103,10 +68,10 @@ public class signup extends HttpServlet {
 //             */
 //            out.println("<html>");
 //            out.println("<head>");
-//            out.println("<title>Servlet signup</title>");            
+//            out.println("<title>Servlet VideoServlet</title>");            
 //            out.println("</head>");
 //            out.println("<body>");
-//            out.println("<h1>Servlet signup at " + request.getContextPath() + "</h1>");
+//            out.println("<h1>Servlet VideoServlet at " + request.getContextPath() + "</h1>");
 //            out.println("</body>");
 //            out.println("</html>");
 //        } finally {            

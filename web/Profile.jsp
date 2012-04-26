@@ -109,6 +109,17 @@
 <!--iterate through list of messages-->
 
 <table>
+    <%
+    if (session.getAttribute("userMsgList") == null) {
+        %>
+        <tr>
+            <td>
+                No Messages!
+            </td>
+        </tr>
+        <%
+    } else {
+    %>
     <tr>
         <td>From   </td>
         <td>Content</td>
@@ -119,6 +130,9 @@
             <td>${msg.getMsg()}</td>
         </tr>
     </c:forEach>
+    <%
+    }
+    %>
 </table>
 
 <br />
@@ -126,21 +140,38 @@
 
 <!--iterate through list of videos-->
 <table>
+    <%
+    if (session.getAttribute("userVidList") == null) {
+        %>
+        <tr>
+            <td>
+                No Videos!
+            </td>
+        </tr>
+        <%
+    } else {
+    %>
     <c:forEach var="vid" items="${userVidList}">
         <tr>
             <td>
                 <h2>${vid.getTitle()}</h2>
                 ${vid.getPosted()}
                 <div id="userVideo">
-                    <video width="640" height="480" controls="controls">
+                    <video width="320" height="240" controls="controls">
                         <source src="${vid.getLocation()}" type="video/mp4" />
                         Your browser does not support HTML5
                     </video>
                 </div>
                 ${vid.getDescription()}
             </td>
+            <td>
+                <a href="VideoServlet?videoid=${vid.getVideoID()}">Watch Now!</a>
+            </td>
         </tr>
     </c:forEach>
+    <%
+    }
+    %>
 </table>
 <br />
 <div style="clear:both"></div>

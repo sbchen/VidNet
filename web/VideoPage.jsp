@@ -51,8 +51,21 @@
 
 <div id="page">
 
-<h1>Video</h1>
-<p></p>
+<h1>${videoInfo.getTitle()}</h1>
+<br />
+
+<div id="vidTitle">
+<h2>Uploaded by: ${videoInfo.getUsername()}</h2>
+<h2>${videoInfo.getDate()}</h2>
+</div>
+
+<div id="vidContainer">
+<video width="640" height="480" controls="controls">
+    <source src="${videoInfo.getPath()}" type="video/mp4" />
+    Your browser does not support HTML 5
+</video>
+</div>
+
 <div style="clear:both"></div>
 </div><!-- close page -->
 
