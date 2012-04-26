@@ -36,6 +36,10 @@
         <servlet-name>SendMsgServlet</servlet-name>
         <servlet-class>com.vidnet.servlet.msg.SendMsgServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.vidnet.servlet.logout.LogoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>SendMsgServlet</servlet-name>
         <url-pattern>/SendMsgServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

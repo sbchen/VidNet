@@ -19,12 +19,12 @@
     <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="screen" />
     <script type="text/javascript" src="js/fancybox/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
-
-     <script type="text/javascript">
-		$(document).ready(function() {
-			$("a.group").fancybox();
-		});
-      </script>
+        
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("a.group").fancybox();
+        });
+    </script>
 
 
 </head>
@@ -39,7 +39,24 @@
 
 <div id="h_navcontainer">
 <ul>
-   <!--<li><a href="Login.jsp">Login</a></li>-->
+   <%
+        if (request.getSession(false) != null) {
+            session = request.getSession();
+            if (session.getAttribute("username") == null || session.getAttribute("username").equals("")) {
+            %>
+                <li><a href="Login.jsp">Login </a></li>
+            <%
+            } else {
+            %>
+                <li><a href="LogoutServlet">Logout </a></li>
+            <%   
+            }
+        } else {
+        %>
+            <li><a href="Login.jsp">Login </a></li>
+        <%
+        }
+   %>
    <li><a href="Profile.jsp">Profile</a></li>
    <li><a href="VideoGallery.jsp">Video Gallery</a></li>
    <li><a href="sign-up.jsp">Sign Up</a></li>

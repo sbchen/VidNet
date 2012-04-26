@@ -79,8 +79,8 @@ public class signup extends HttpServlet {
         } else {
             session.setAttribute("user", null);
             session.setAttribute("userid", -1);
-            session.setAttribute("username", " ");
-            session.setAttribute("email", " ");
+            session.setAttribute("username", "");
+            session.setAttribute("email", "");
             session.setAttribute("userVidList", null);
             session.setAttribute("userMsgList", null);
             session.setAttribute("Authenticated", false);

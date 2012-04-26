@@ -101,7 +101,24 @@ root.find("button.next").keydown(function(e) {
 
 <div id="h_navcontainer">
 <ul>
-   <!--<li><a href="Login.jsp">Login</a></li>-->
+   <%
+        if (request.getSession(false) != null) {
+            session = request.getSession();
+            if (session.getAttribute("username") == null || session.getAttribute("username").equals("")) {
+            %>
+                <li><a href="Login.jsp">Login </a></li>
+            <%
+            } else {
+            %>
+                <li><a href="LogoutServlet">Logout </a></li>
+            <%   
+            }
+        } else {
+        %>
+            <li><a href="Login.jsp">Login </a></li>
+        <%
+        }
+   %>
    <li><a href="Profile.jsp">Profile</a></li>
    <li><a href="VideoGallery.jsp">Video Gallery</a></li>
    <li><a href="sign-up.jsp">Sign Up</a></li>
@@ -266,7 +283,7 @@ root.find("button.next").keydown(function(e) {
 					<em>You are almost member of VidNet! Click finalize when you are ready to proceed.</em>
 				</h2>
 
-                                <img src="#" style="margin:30px 0 0 140px" />
+                                <img src="images/logo.png" style="margin:30px 0 0 140px" />
 
 				<p style="margin-top:30px">
                                 <li class="clearfix">

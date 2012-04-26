@@ -30,15 +30,24 @@
 
 <div id="h_navcontainer">
 <ul>
-    <%session.setAttribute("username", request.getParameter("username"));%>
-    <% if (session.getAttribute("username").equals("")){%>
-    <li><a href="Login.jsp">Login </a></li>
-    <%}
-    else{%>
-    <li><a href="index.jsp">Logout</a></li>
-    <%}
-    %>
-   <li><a href="Login.jsp">Login</a></li>
+    <%
+        if (request.getSession(false) != null) {
+            session = request.getSession();
+            if (session.getAttribute("username") == null || session.getAttribute("username").equals("")) {
+            %>
+                <li><a href="Login.jsp">Login </a></li>
+            <%
+            } else {
+            %>
+                <li><a href="LogoutServlet">Logout </a></li>
+            <%   
+            }
+        } else {
+        %>
+            <li><a href="Login.jsp">Login </a></li>
+        <%
+        }
+   %>
    <li><a href="Profile.jsp">Profile</a></li>
    <li><a href="VideoGallery.jsp">Video Gallery</a></li>
    <li><a href="sign-up.jsp">Sign Up</a></li>
