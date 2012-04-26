@@ -37,6 +37,9 @@ public class MessageModel {
             Class.forName("com.mysql.jdbc.Driver");
             
             //make the connection
+            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            
+            //make the statement
             dbstatement = dbconnection.createStatement();
             
             //query the database for the list of messages
