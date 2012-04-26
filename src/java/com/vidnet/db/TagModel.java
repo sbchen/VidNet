@@ -28,6 +28,11 @@ public class TagModel {
     String query;
     LinkedList<Tag> tagList;
     
+    //search tags for videos
+    public LinkedList<VideoContainer> SearchTags(LinkedList<String> tags) {
+        return null;
+    }
+    
     //get all tags of a video
     public LinkedList<Tag> getTagList(int videoid) {
         query = "SELECT * FROM Tag WHERE VideoID = " + videoid + ";";
