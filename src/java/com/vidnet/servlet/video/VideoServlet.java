@@ -4,6 +4,7 @@
  */
 package com.vidnet.servlet.video;
 
+import com.vidnet.db.CommentModel;
 import com.vidnet.db.VideoModel;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,6 +41,7 @@ public class VideoServlet extends HttpServlet {
         int videoid = 0;
         
         VideoModel videoModel;
+        CommentModel comModel = new CommentModel();
         
         HttpSession session;
         RequestDispatcher rd;
@@ -56,6 +58,7 @@ public class VideoServlet extends HttpServlet {
         if (videoid != 0) {
             videoModel = new VideoModel();
             session.setAttribute("videoInfo", videoModel.getAllInfo(videoid));
+            session.setAttribute("vidComList", comModel.getComments(videoid));
         }
         
         rd.forward(request, response);

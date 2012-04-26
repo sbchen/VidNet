@@ -44,14 +44,15 @@ public class LogoutServlet extends HttpServlet {
         rd = getServletContext().getRequestDispatcher(dest);
         
         //logout session attributes
-        session.setAttribute("user", null);
-        session.setAttribute("userid", -1);
-        session.setAttribute("username", "");
-        session.setAttribute("email", "");
-        session.setAttribute("userVidList", null);
-        session.setAttribute("userMsgList", null);
-        session.setAttribute("userList", null);
-        session.setAttribute("Authenticated", false);
+//        session.setAttribute("user", null);
+//        session.setAttribute("userid", -1);
+//        session.setAttribute("username", "");
+//        session.setAttribute("email", "");
+//        session.setAttribute("userVidList", null);
+//        session.setAttribute("userMsgList", null);
+//        session.setAttribute("userList", null);
+//        session.setAttribute("Authenticated", false);
+        session.invalidate();
         
         rd.forward(request, response);
 //        response.setContentType("text/html;charset=UTF-8");

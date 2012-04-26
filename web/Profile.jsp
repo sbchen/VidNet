@@ -5,7 +5,7 @@
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="com.vidnet.db.UserModel"%>
+<%@page import="com.vidnet.db.UserModel, java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -110,7 +110,7 @@
 
 <table>
     <%
-    if (session.getAttribute("userMsgList") == null) {
+    if (session.getAttribute("userMsgList") == null || ((LinkedList)session.getAttribute("userMsgList")).isEmpty()) {
         %>
         <tr>
             <td>
@@ -141,7 +141,7 @@
 <!--iterate through list of videos-->
 <table>
     <%
-    if (session.getAttribute("userVidList") == null) {
+    if (session.getAttribute("userVidList") == null || ((LinkedList)session.getAttribute("userVidList")).isEmpty()) {
         %>
         <tr>
             <td>
@@ -156,12 +156,12 @@
             <td>
                 <h2>${vid.getTitle()}</h2>
                 ${vid.getPosted()}
-                <div id="userVideo">
+<!--                <div id="userVideo">
                     <video width="320" height="240" controls="controls">
                         <source src="${vid.getLocation()}" type="video/mp4" />
                         Your browser does not support HTML5
                     </video>
-                </div>
+                </div>-->
                 ${vid.getDescription()}
             </td>
             <td>

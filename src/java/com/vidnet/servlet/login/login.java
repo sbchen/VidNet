@@ -71,14 +71,15 @@ public class login extends HttpServlet {
             session.setAttribute("Authenticated", true);
             requestDispatch.forward(request, response);
         } else {
-            session.setAttribute("user", null);
-            session.setAttribute("userid", -1);
-            session.setAttribute("username", "");
-            session.setAttribute("email", "");
-            session.setAttribute("userVidList", null);
-            session.setAttribute("userMsgList", null);
-            session.setAttribute("userList", null);
-            session.setAttribute("Authenticated", false);
+//            session.setAttribute("user", null);
+//            session.setAttribute("userid", -1);
+//            session.setAttribute("username", "");
+//            session.setAttribute("email", "");
+//            session.setAttribute("userVidList", null);
+//            session.setAttribute("userMsgList", null);
+//            session.setAttribute("userList", null);
+//            session.setAttribute("Authenticated", false);
+            session.invalidate();
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<h1>Incorrect username/password combination!</h1>");

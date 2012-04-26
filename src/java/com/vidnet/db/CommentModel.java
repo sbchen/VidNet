@@ -23,12 +23,14 @@ public class CommentModel {
     
     //temporary working variables
     Comment tempCom;
+    CommentContainer tempComCont;
     String query;
     LinkedList<Comment> comList;
+    LinkedList<CommentContainer> comContList;
     
     //get comments of specified video
-    public LinkedList<Comment> getComments(int videoid) {
-        query = "SELECT * FROM Comment WHERE VideoID = " + videoid + ";";
+    public LinkedList<CommentContainer> getComments(int videoid) {
+        query = "SELECT C.CommentID, C.Content, C.VideoID, C.Posted, C.UserID, U.Username FROM Comment C JOIN User U ON C.UserID = U.UserID WHERE VideoID = " + videoid + ";";
         
         try {
             //use mysql jdbc driver
@@ -44,20 +46,20 @@ public class CommentModel {
             dbresults = dbstatement.executeQuery(query);
             
             //initialize comList
-            comList = new LinkedList<Comment>();
+            comContList = new LinkedList<CommentContainer>();
             while (dbresults.next()) {
-                tempCom = new Comment(dbresults.getInt(1), dbresults.getString(2), dbresults.getInt(3), dbresults.getTimestamp(4), dbresults.getInt(5));
-                comList.add(tempCom);
+                tempComCont = new CommentContainer(dbresults.getInt(1), dbresults.getString(2), dbresults.getInt(3), dbresults.getTimestamp(4), dbresults.getInt(5), dbresults.getString(6));
+                comContList.add(tempComCont);
             }
             
-            return comList;
+            return comContList;
         } catch (Exception e) {
             return null;
         }
     }
     
     //overload get comments
-    public LinkedList<Comment> getComments(Video video) {
+    public LinkedList<CommentContainer> getComments(Video video) {
         return getComments(video.getVideoID());
     }
     

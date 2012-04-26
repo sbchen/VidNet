@@ -4,6 +4,8 @@
     Author     : Moy
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -56,7 +58,7 @@
 
 <div id="vidTitle">
 <h2>Uploaded by: ${videoInfo.getUsername()}</h2>
-<h2>${videoInfo.getDate()}</h2>
+On: ${videoInfo.getDate()}
 </div>
 
 <div id="vidContainer">
@@ -64,6 +66,56 @@
     <source src="${videoInfo.getPath()}" type="video/mp4" />
     Your browser does not support HTML 5
 </video>
+</div>
+    
+    <br />
+    <br />
+    
+<div id="vidDescContainer">
+    <h2>Description: </h2>
+    <p>${videoInfo.getDesc()}</p>
+</div>
+
+<div id="vidCommentContainer">
+    <form action="SendCommentServlet" method="post">
+        <textarea name="com" rows="3" cols="45"></textarea>
+        <input type="hidden" name="vidID" value="${videoInfo.getVideoID()}"/>
+        <br />
+        <input type="submit" value="Comment!" />
+    </form>
+        
+    <br />
+    <br />
+    
+    <h2>Comments: </h2>
+    <table>
+        <%
+        if (session.getAttribute("vidComList") == null || ((LinkedList)session.getAttribute("vidComList")).isEmpty()) {
+            %>
+            <tr>
+                <td>
+                    No Comments!
+                </td>
+            </tr>
+            <%
+        } else {
+        %>
+        <tr>
+            <td>From   </td>
+            <td>Content</td>
+            <td>Posted</td>
+        </tr>
+        <c:forEach var="com" items="${vidComList}">
+            <tr>
+                <td>${com.getUsername()}</td>
+                <td>${com.getContent()}</td>
+                <td>${com.getPosted()}</td>
+            </tr>
+        </c:forEach>
+        <%
+        }
+        %>
+    </table>
 </div>
 
 <div style="clear:both"></div>
