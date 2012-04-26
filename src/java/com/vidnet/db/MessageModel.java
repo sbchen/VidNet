@@ -29,7 +29,7 @@ public class MessageModel {
     LinkedList<Message> msgList;
     
     //get messages sent to user
-    public LinkedList<Message> getMsgSentTo(int userid) {
+    public LinkedList<Message> getMsgsReceived(int userid) {
         query = "SELECT * FROM Message WHERE RecipientID = " + userid + " ORDER BY MessageID DESC;";
         
         try {
@@ -55,13 +55,13 @@ public class MessageModel {
         }
     }
     
-    //overloaded getMsgSentTo
-    public LinkedList<Message> getMsgSentTo(User user) {
-        return getMsgSentTo(user.getUserID());
+    //overloaded getMsgsReceived
+    public LinkedList<Message> getMsgsReceived(User user) {
+        return getMsgsReceived(user.getUserID());
     }
     
     //get messages sent from user
-    public LinkedList<Message> getMsgSentFrom(int userid) {
+    public LinkedList<Message> getMsgsSent(int userid) {
         query = "SELECT * FROM Message WHERE SenderID = " + userid + " ORDER BY MessageID DESC;";
         
         try {
@@ -87,9 +87,9 @@ public class MessageModel {
         }
     }
     
-    //overloaded getMsgSentFrom
-    public LinkedList<Message> getMsgSentFrom(User user) {
-        return getMsgSentFrom(user.getUserID());
+    //overloaded getMsgsSent
+    public LinkedList<Message> getMsgsSent(User user) {
+        return getMsgsSent(user.getUserID());
     }
     
     //send message method

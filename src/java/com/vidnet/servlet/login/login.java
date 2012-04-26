@@ -66,7 +66,7 @@ public class login extends HttpServlet {
             session.setAttribute("username", tempUser.getUsername());
             session.setAttribute("email", tempUser.getEmail());
             session.setAttribute("userVidList", videoModel.getVideos(tempUser));
-            session.setAttribute("userMsgList", msgModel.getMsgSentTo(tempUser));
+            session.setAttribute("userMsgList", msgModel.getMsgsReceived(tempUser));
             session.setAttribute("Authenticated", true);
             requestDispatch.forward(request, response);
         } else {

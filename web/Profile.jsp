@@ -5,7 +5,8 @@
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page contentType="text/html" pageEncoding="UTF-8" import="com.vidnet.db.UserModel"%>
+<%@page import="com.vidnet.db.UserModel"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
 
 <div id="h_navcontainer">
 <ul>
-   <!--<li><a href="Login.jsp">Login</a></li>-->
+   <li><a href="Login.jsp">Login</a></li>
    <li><a href="Profile.jsp">Profile</a></li>
    <li><a href="VideoGallery.jsp">Video Gallery</a></li>
    <li><a href="sign-up.jsp">Sign Up</a></li>
@@ -82,8 +83,9 @@
 
 <h1>Messages</h1>
 <br />
-
+${userMsgList}
 <!--iterate through list of messages-->
+<%--
 <table>
 <!--    <tr>
         <td>From</td>
@@ -96,7 +98,7 @@
         </tr>
     </c:forEach>
 </table>
-
+--%>
 <br />
 <h1>Videos</h1>
 <br />

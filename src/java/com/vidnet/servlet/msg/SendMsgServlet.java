@@ -51,7 +51,7 @@ public class SendMsgServlet extends HttpServlet {
         
         tempMsg = msgModel.Send(msg, user.getUserID(), recUserID);
         
-        session.setAttribute("msgList", msgModel.getMsgSentTo(user));
+        session.setAttribute("msgList", msgModel.getMsgsReceived(user));
         
         rd.forward(request, response);
         
