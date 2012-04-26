@@ -25,12 +25,14 @@ public class MessageModel {
     
     //temporary working variables
     Message tempMsg;
+    MsgContainer msgContainer;
     String query;
-    LinkedList<Message> msgList;
+    LinkedList<MsgContainer> msgList;
     
     //get messages sent to user
-    public LinkedList<Message> getMsgsReceived(int userid) {
-        query = "SELECT * FROM Message WHERE RecipientID = " + userid + " ORDER BY MessageID DESC;";
+    public LinkedList<MsgContainer> getMsgsReceived(int userid) {
+//        query = "SELECT * FROM Message WHERE RecipientID = " + userid + " ORDER BY MessageID DESC;";
+        query = "SELECT Username, MsgContent FROM Message JOIN User ON SenderID = UserID WHERE RecipientID = " + userid + " ORDER BY MessageID DESC;";
         
         try {
             //use mysql jdbc driver
@@ -46,10 +48,11 @@ public class MessageModel {
             dbresults = dbstatement.executeQuery(query);
             
             //initialize msgList
-            msgList = new LinkedList<Message>();
+            msgList = new LinkedList<MsgContainer>();
             while (dbresults.next()) {
-                tempMsg = new Message(dbresults.getInt(1), dbresults.getString(2), dbresults.getInt(3), dbresults.getInt(4));
-                msgList.add(tempMsg);
+//                tempMsg = new Message(dbresults.getInt(1), dbresults.getString(2), dbresults.getInt(3), dbresults.getInt(4));
+                msgContainer = new MsgContainer(dbresults.getString(1), dbresults.getString(2));
+                msgList.add(msgContainer);
             }
             
             return msgList;
@@ -59,13 +62,14 @@ public class MessageModel {
     }
     
     //overloaded getMsgsReceived
-    public LinkedList<Message> getMsgsReceived(User user) {
+    public LinkedList<MsgContainer> getMsgsReceived(User user) {
         return getMsgsReceived(user.getUserID());
     }
     
     //get messages sent from user
-    public LinkedList<Message> getMsgsSent(int userid) {
-        query = "SELECT * FROM Message WHERE SenderID = " + userid + " ORDER BY MessageID DESC;";
+    public LinkedList<MsgContainer> getMsgsSent(int userid) {
+//        query = "SELECT * FROM Message WHERE SenderID = " + userid + " ORDER BY MessageID DESC;";
+        query = "SELECT Username, MsgContent FROM Message JOIN User ON RecipientID = UserID WHERE SenderID = " + userid + " ORDER BY MessageID DESC;";
         
         try {
             //use mysql jdbc driver
@@ -78,10 +82,10 @@ public class MessageModel {
             dbresults = dbstatement.executeQuery(query);
             
             //initialize msgList
-            msgList = new LinkedList<Message>();
+            msgList = new LinkedList<MsgContainer>();
             while (dbresults.next()) {
-                tempMsg = new Message(dbresults.getInt(1), dbresults.getString(2), dbresults.getInt(3), dbresults.getInt(4));
-                msgList.add(tempMsg);
+//                tempMsg = new Message(dbresults.getInt(1), dbresults.getString(2), dbresults.getInt(3), dbresults.getInt(4));
+                msgList.add(msgContainer);
             }
             
             return msgList;
@@ -91,7 +95,7 @@ public class MessageModel {
     }
     
     //overloaded getMsgsSent
-    public LinkedList<Message> getMsgsSent(User user) {
+    public LinkedList<MsgContainer> getMsgsSent(User user) {
         return getMsgsSent(user.getUserID());
     }
     

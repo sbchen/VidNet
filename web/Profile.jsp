@@ -82,26 +82,23 @@
 <br />
 
 <h1>Messages</h1>
-<br />
-${userMsgList}
 <!--iterate through list of messages-->
-<%--
+
 <table>
-<!--    <tr>
-        <td>From</td>
+    <tr>
+        <td>From   </td>
         <td>Content</td>
-    </tr>-->
+    </tr>
     <c:forEach var="msg" items="${userMsgList}">
         <tr>
-            <td>${msg.getSenderID()}</td>
-            <td>${msg.getMsgContent()}</td>
+            <td>${msg.getUsername()}</td>
+            <td>${msg.getMsg()}</td>
         </tr>
     </c:forEach>
 </table>
---%>
+
 <br />
 <h1>Videos</h1>
-<br />
 
 <!--iterate through list of videos-->
 <table>
