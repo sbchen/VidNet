@@ -84,8 +84,14 @@
 <p></p>
 <div id="gallery">
     <c:forEach var="vid" items="${gallVidList}">
-        <div class="float_left_thumb"><a href='VideoServlet?videoid=${vid.getVideoID()}' title="${vid.getTitle()}"  class="group" rel="group">
-            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+        <div class="float_left_thumb">
+            <a href='VideoServlet?videoid=${vid.getVideoID()}' title="${vid.getTitle()}"  class="group" rel="group">
+                <video width="140" height="140" controls="controls">
+                    <source src="${vid.getLocation()}" type="video/mp4" />
+                    Your browser does not support HTML5
+                </video>
+            </a>
+        </div>
     </c:forEach>
 <!--    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
             <img src="photos/tb_1.jpg" alt="demo" /></a></div>
