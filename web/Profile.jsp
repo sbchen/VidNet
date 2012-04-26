@@ -97,6 +97,8 @@
                         Your browser does not support HTML5
                     </video>
                 </div>
+                ${vid.getLocation().toString()}
+                <%=request.getContextPath()%>
             </td>
         </tr>
     </c:forEach>

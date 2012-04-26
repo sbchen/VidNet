@@ -82,7 +82,7 @@ public class VidUploadServlet extends HttpServlet {
                 String fileName;
                 
                 //set the filepath
-                filePath += user.getUsername() + "\\";
+//                filePath += user.getUsername() + "\\";
                 
                 //set the filename
                 nextVideoID = videoModel.NextVideoID();
@@ -102,7 +102,7 @@ public class VidUploadServlet extends HttpServlet {
                         fi.write(file);
                         
                         //store file in the database
-                        videoModel.Upload(nextVideoID, title, desc, filePath + fileName, user.getUserID());
+                        videoModel.Upload(nextVideoID, title, desc, "Uploads/" + fileName, user.getUserID());
                     } else {
                         fieldName = fi.getFieldName();
                         if (fieldName.equals("title")) {
