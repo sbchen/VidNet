@@ -49,7 +49,7 @@
     <tr>
         
         <td>
-            Select video to upload:
+            Upload Video
             <br />
             <br />
 
@@ -86,8 +86,23 @@
 <h2>Videos</h2>
 <br />
 
-<%--iterate through list of videos--%>
-
+<!--iterate through list of videos-->
+<table>
+    <c:forEach var="vid" items="${userVidList}">
+        <tr>
+            <td>
+                <div id="userVideo">
+                    <video width="320" height="240" controls="controls">
+                        <source src="${vid.getLocation()}" type="video/mp4" />
+                        Your browser does not support HTML5
+                    </video>
+                </div>
+            </td>
+        </tr>
+    </c:forEach>
+</table>
+${userVidList}
+${email}
 <br />
 <div style="clear:both"></div>
 </div><!-- close page -->

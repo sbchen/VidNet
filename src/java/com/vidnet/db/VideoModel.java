@@ -208,6 +208,7 @@ public class VideoModel {
         tempVid = new Video(videoid, title, desc, loc, now, userid);
         query = "INSERT INTO Video (VideoID, Title, Description, Location, Posted, UserID) VALUES (" +
                 videoid + ", '" + title + "', '" + desc + "', '" + loc + "', '" + now.toString() + "', " + userid + ");";
+        query = query.replace("\\", "\\\\");
         
         try {
             //use mysql jdbc driver
