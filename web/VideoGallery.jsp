@@ -52,6 +52,18 @@
 
 <h1>Gallery</h1>
 
+<form name="SearchBox">
+  <table width="400" border="1" cellpadding="5">
+    <tr>
+      <td>
+        <input type="hidden" name="view" value="grid">
+        Search Videos:<input type="text" name="keyword" size="30" maxlength="50"><input type="submit" value="Search">
+      </td>
+    </tr>
+  </table>
+</form>
+<p></p>
+<p></p>
 <div id="gallery">
 	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
 				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
@@ -84,7 +96,9 @@
                                    	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
 				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
                                    	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>                            
+				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>  
+    
+    <a href="VideoPage.jsp">Video page link</a>
 </div><!-- close gallery -->
 
 <div style="clear:both"></div>
