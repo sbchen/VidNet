@@ -23,6 +23,80 @@ public class UserModel {
     //temporary working variables
     User tempUser;
     String query;
+    String tempStr;
+    int tempInt;
+    
+    //get userid of a specific username
+    public int getUserID(String username) {
+        //create the query
+        query = "SELECT UserID FROM USER WHERE username = '" + username + "';";
+        
+        try {
+            //use mysql jdbc driver
+            Class.forName("com.mysql.jdbc.Driver");
+
+            //make the connection
+            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
+
+            //get statement from connection
+            dbstatement = dbconnection.createStatement();
+
+            //query the database for the user
+            dbresults = dbstatement.executeQuery(query);
+
+            //transfer resultset to tempUser working variable
+            dbresults.next();
+            tempInt = dbresults.getInt(1);
+            
+            //close connection
+            dbconnection.close();
+            
+            return tempInt;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+    
+    //overload getUserID to accept a User object
+    public int getUserID(User user) {
+        return getUserID(user.getUsername());
+    }
+    
+    //get the username from a userid
+    public String getUserName(int userid) {
+        //create the query
+        query = "SELECT Username FROM USER WHERE UserID = '" + userid + "';";
+        
+        try {
+            //use mysql jdbc driver
+            Class.forName("com.mysql.jdbc.Driver");
+
+            //make the connection
+            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
+
+            //get statement from connection
+            dbstatement = dbconnection.createStatement();
+
+            //query the database for the user
+            dbresults = dbstatement.executeQuery(query);
+
+            //transfer resultset to tempUser working variable
+            dbresults.next();
+            tempStr = dbresults.getString(1);
+            
+            //close connection
+            dbconnection.close();
+            
+            return tempStr;
+        } catch (Exception e) {
+            return "";
+        }
+    }
+    
+    //overload getUserName to accept user object
+    public String getUserName(User user) {
+        return getUserName(user.getUserID());
+    }
     
     //login method. should return the userid if username and password is correct and -1 otherwise
     public User Login(String email, String password) {

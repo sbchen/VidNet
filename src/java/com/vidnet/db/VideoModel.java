@@ -178,19 +178,19 @@ public class VideoModel {
                 index = 2000;
             }
             
-            Date today = new Date();
-            Timestamp now = new Timestamp(today.getTime());
-            tempVid = new Video(index, title, desc, loc, now, userid);
-            query = "INSERT INTO Video (VideoID, Title, Description, Location, Posted, UserID) VALUES (" +
-                    index + ", '" + title + "', '" + desc + "', '" + loc + "', '" + now.toString() + "', " + userid + ");";
-
-            //execute the query
-            dbstatement.executeUpdate(query);
-
-            //close connection
-            dbconnection.close();
-
-            return tempVid;
+//            Date today = new Date();
+//            Timestamp now = new Timestamp(today.getTime());
+//            tempVid = new Video(index, title, desc, loc, now, userid);
+//            query = "INSERT INTO Video (VideoID, Title, Description, Location, Posted, UserID) VALUES (" +
+//                    index + ", '" + title.repl + "', '" + desc + "', '" + loc + "', '" + now.toString() + "', " + userid + ");";
+//
+//            //execute the query
+//            dbstatement.executeUpdate(query);
+//
+//            //close connection
+//            dbconnection.close();
+//
+            return Upload(index, title, desc, loc, userid);
         } catch (Exception e) {
             return null;
         }
@@ -207,7 +207,7 @@ public class VideoModel {
         Timestamp now = new Timestamp(today.getTime());
         tempVid = new Video(videoid, title, desc, loc, now, userid);
         query = "INSERT INTO Video (VideoID, Title, Description, Location, Posted, UserID) VALUES (" +
-                videoid + ", '" + title + "', '" + desc + "', '" + loc + "', '" + now.toString() + "', " + userid + ");";
+                videoid + ", '" + title.replace("'", "''") + "', '" + desc.replace("'", "''") + "', '" + loc + "', '" + now.toString() + "', " + userid + ");";
         query = query.replace("\\", "\\\\");
         
         try {

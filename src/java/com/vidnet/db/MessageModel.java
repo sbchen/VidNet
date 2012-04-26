@@ -119,7 +119,7 @@ public class MessageModel {
             
             tempMsg = new Message(index, content, senderid, recid);
             query = "INSERT INTO Message (MessageID, MsgContent, SenderID, RecipientID) VALUES (" + 
-                    index + ", '" + content + "', " + senderid + ", " + recid + ");";
+                    index + ", '" + content.replace("'", "''") + "', " + senderid + ", " + recid + ");";
             
             //execute the insertion
             dbstatement.executeUpdate(query);

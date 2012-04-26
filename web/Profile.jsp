@@ -5,7 +5,7 @@
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="com.vidnet.db.UserModel"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +19,7 @@
 
 <%String username = (String) session.getAttribute("username"); %>
 <%String email = (String) session.getAttribute("email"); %>
+<%UserModel userModel = new UserModel(); %>
 
 <div id="container">
 
@@ -40,9 +41,7 @@
 
 <div id="page">
 
-<h1><%=username%>'s Page</h1>
-
-<h2>Welcome <%=username%>!</h2>
+<h1>Welcome <%=username%>!</h1>
 <br/>
 
 <table>
@@ -81,9 +80,25 @@
 </table>
 <br />
 
-<h2>Messages</h2>
-<p></p>
-<h2>Videos</h2>
+<h1>Messages</h1>
+<br />
+
+<!--iterate through list of messages-->
+<table>
+    <tr>
+        <td>From</td>
+        <td>Content</td>
+    </tr>
+    <c:forEach var="msg" items="${userMsgList}">
+        <tr>
+            <td>${msg.getSenderID()}</td>
+            <td>${msg.getMsgContent()}</td>
+        </tr>
+    </c:forEach>
+</table>
+
+<br />
+<h1>Videos</h1>
 <br />
 
 <!--iterate through list of videos-->
@@ -91,20 +106,19 @@
     <c:forEach var="vid" items="${userVidList}">
         <tr>
             <td>
+                <h2>${vid.getTitle()}</h2>
+                ${vid.getPosted()}
                 <div id="userVideo">
                     <video width="640" height="480" controls="controls">
                         <source src="${vid.getLocation()}" type="video/mp4" />
                         Your browser does not support HTML5
                     </video>
                 </div>
-                ${vid.getLocation().toString()}
-                <%=request.getContextPath()%>
+                ${vid.getDescription()}
             </td>
         </tr>
     </c:forEach>
 </table>
-${userVidList}
-${email}
 <br />
 <div style="clear:both"></div>
 </div><!-- close page -->

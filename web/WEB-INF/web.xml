@@ -32,6 +32,10 @@
             <param-value>test</param-value>
         </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>SendMsgServlet</servlet-name>
+        <servlet-class>com.vidnet.servlet.msg.SendMsgServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>VidUploadServlet</servlet-name>
         <url-pattern>/VidUploadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendMsgServlet</servlet-name>
+        <url-pattern>/SendMsgServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

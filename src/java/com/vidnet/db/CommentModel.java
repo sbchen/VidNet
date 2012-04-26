@@ -87,7 +87,7 @@ public class CommentModel {
             Timestamp now = new Timestamp(today.getTime());
             tempCom = new Comment(index, content, videoid, now, userid);
             query = "INSERT INTO Comment (CommentID, Content, VideoID, Posted, UserID) VALUES (" +
-                    index + ", '" + content + "', " + videoid + ", '" + now.toString() + "', " + userid + ");";
+                    index + ", '" + content.replace("'", "''") + "', " + videoid + ", '" + now.toString() + "', " + userid + ");";
             
             //execute the insertion
             dbstatement.executeUpdate(query);

@@ -125,7 +125,7 @@ public class TagModel {
             
             tempTag = new Tag(index, tag, videoid);
             query = "INSERT INTO Tag (TagID, TagName, VideoID) VALUES (" +
-                    index + ", '" + tag + "', " + videoid + ");";
+                    index + ", '" + tag.replace("'", "''") + "', " + videoid + ");";
             
             //execute the query
             dbstatement.executeUpdate(query);
