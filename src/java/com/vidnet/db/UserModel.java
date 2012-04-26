@@ -6,6 +6,7 @@ package com.vidnet.db;
 
 import java.sql.*;
 import java.util.Date;
+import java.util.LinkedList;
 
 /**
  *
@@ -21,10 +22,42 @@ public class UserModel {
     ResultSet dbresults;
     
     //temporary working variables
+    LinkedList<User> userList;
     User tempUser;
     String query;
     String tempStr;
     int tempInt;
+    
+    //get list of all users
+    public LinkedList<User> getUsers() {
+        
+        query = "SELECT * FROM User ORDER BY Username;";
+        
+        try {
+            //use mysql jdbc driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            //make the connection
+            dbconnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            
+            //get statement from connection
+            dbstatement = dbconnection.createStatement();
+            
+            //query the database for the list of user videos
+            dbresults = dbstatement.executeQuery(query);
+            
+            //initialize vidList
+            userList = new LinkedList<User>();
+            while (dbresults.next()) {
+                tempUser = new User(dbresults.getInt(1), dbresults.getString(2), dbresults.getString(3), dbresults.getString(4), dbresults.getTimestamp(5));
+                userList.add(tempUser);
+            }
+            
+            return userList;
+        } catch (Exception e) {
+            return null;
+        }
+    }
     
     //get userid of a specific username
     public int getUserID(String username) {

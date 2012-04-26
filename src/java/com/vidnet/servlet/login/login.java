@@ -67,6 +67,7 @@ public class login extends HttpServlet {
             session.setAttribute("email", tempUser.getEmail());
             session.setAttribute("userVidList", videoModel.getVideos(tempUser));
             session.setAttribute("userMsgList", msgModel.getMsgsReceived(tempUser));
+            session.setAttribute("userList", userModel.getUsers());
             session.setAttribute("Authenticated", true);
             requestDispatch.forward(request, response);
         } else {
@@ -76,6 +77,7 @@ public class login extends HttpServlet {
             session.setAttribute("email", "");
             session.setAttribute("userVidList", null);
             session.setAttribute("userMsgList", null);
+            session.setAttribute("userList", null);
             session.setAttribute("Authenticated", false);
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();

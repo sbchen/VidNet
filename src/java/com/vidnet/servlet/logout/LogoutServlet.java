@@ -50,6 +50,7 @@ public class LogoutServlet extends HttpServlet {
         session.setAttribute("email", "");
         session.setAttribute("userVidList", null);
         session.setAttribute("userMsgList", null);
+        session.setAttribute("userList", null);
         session.setAttribute("Authenticated", false);
         
         rd.forward(request, response);
