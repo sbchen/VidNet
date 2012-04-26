@@ -88,7 +88,14 @@
             <br />
             
             <form action="SendMsgServlet" method="post">
-                <div id="msg-input-name">Send to Username: </div><div id="msg-input-field"><input type="text" name="recUsername" class="text" size="25" /></div>
+<!--                <div id="msg-input-name">Send to Username: </div><div id="msg-input-field"><input type="text" name="recUsername" class="text" size="25" /></div>-->
+                <div id="msg-input-name">Send to Username: </div>
+                <select name="recUsername" id="msg-select">
+                    <option value="">--Select a User--</option>
+                    <c:forEach var="item" items="${userList}">
+                        <option>${item.getUsername()}</option>
+                    </c:forEach>
+                </select>
                 <div id="msg-input-areaname">Message: </div><div id="msg-input-area"><textarea name="msg" rows="4"></textarea></div>
                 <br />
                 <input type="submit" value="Message!" />

@@ -4,6 +4,7 @@
  */
 package com.vidnet.servlet.signup;
 
+import com.vidnet.db.MessageModel;
 import com.vidnet.db.User;
 import com.vidnet.db.UserModel;
 import com.vidnet.db.VideoModel;
@@ -35,8 +36,8 @@ public class signup extends HttpServlet {
      */
     
     //constants
-    //String dest = "/Profile.jsp";
-    String dest = "login";
+    String dest = "/Profile.jsp";
+//    String dest = "login";
     
     //temporary working variables
     User tempUser;
@@ -44,6 +45,7 @@ public class signup extends HttpServlet {
     //models with business functions
     UserModel userModel;
     VideoModel videoModel;
+    MessageModel msgModel;
     
     //other helpers
     RequestDispatcher requestDispatch;
@@ -70,24 +72,24 @@ public class signup extends HttpServlet {
         
         if (tempUser != null) {
             
-            dest += "?email=" + tempUser.getEmail() + "&pass=" + tempUser.getPassword();
+//            dest += "?email=" + tempUser.getEmail() + "&pass=" + tempUser.getPassword();
             
-//            videoModel = new VideoModel();
-//            
-//            session.setAttribute("user", tempUser);
-//            session.setAttribute("userid", tempUser.getUserID());
-//            session.setAttribute("username", tempUser.getUsername());
-//            session.setAttribute("email", tempUser.getEmail());
-//            session.setAttribute("Authenticated", true);
+            videoModel = new VideoModel();
+            
+            session.setAttribute("user", tempUser);
+            session.setAttribute("userid", tempUser.getUserID());
+            session.setAttribute("username", tempUser.getUsername());
+            session.setAttribute("email", tempUser.getEmail());
+            session.setAttribute("Authenticated", true);
             requestDispatch.forward(request, response);
         } else {
-//            session.setAttribute("user", null);
-//            session.setAttribute("userid", -1);
-//            session.setAttribute("username", "");
-//            session.setAttribute("email", "");
-//            session.setAttribute("userVidList", null);
-//            session.setAttribute("userMsgList", null);
-//            session.setAttribute("Authenticated", false);
+            session.setAttribute("user", null);
+            session.setAttribute("userid", -1);
+            session.setAttribute("username", "");
+            session.setAttribute("email", "");
+            session.setAttribute("userVidList", null);
+            session.setAttribute("userMsgList", null);
+            session.setAttribute("Authenticated", false);
             PrintWriter out = response.getWriter();
             out.println("<h1>Sign up information is invalid!</h1>");
             out.close();
