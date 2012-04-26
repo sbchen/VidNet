@@ -99,7 +99,7 @@
 <h3>User4</h3>
 <p class="more">About User</p>
 		
-<p>User Info</p>		
+<p>User Info</p>
 </div>
 
 </div><!-- close tab panes -->
