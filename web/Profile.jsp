@@ -85,10 +85,10 @@
 
 <!--iterate through list of messages-->
 <table>
-    <tr>
+<!--    <tr>
         <td>From</td>
         <td>Content</td>
-    </tr>
+    </tr>-->
     <c:forEach var="msg" items="${userMsgList}">
         <tr>
             <td>${msg.getSenderID()}</td>

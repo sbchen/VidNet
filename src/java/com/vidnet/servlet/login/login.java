@@ -4,10 +4,7 @@
  */
 package com.vidnet.servlet.login;
 
-import com.vidnet.db.User;
-import com.vidnet.db.UserModel;
-import com.vidnet.db.Video;
-import com.vidnet.db.VideoModel;
+import com.vidnet.db.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
@@ -41,6 +38,7 @@ public class login extends HttpServlet {
     //models with business functions
     UserModel userModel = new UserModel();
     VideoModel videoModel = new VideoModel();
+    MessageModel msgModel = new MessageModel();
     
     //other helpers
     RequestDispatcher requestDispatch;
@@ -68,6 +66,7 @@ public class login extends HttpServlet {
             session.setAttribute("username", tempUser.getUsername());
             session.setAttribute("email", tempUser.getEmail());
             session.setAttribute("userVidList", videoModel.getVideos(tempUser));
+            session.setAttribute("userMsgList", msgModel.getMsgSentTo(tempUser));
             session.setAttribute("Authenticated", true);
             requestDispatch.forward(request, response);
         } else {
@@ -76,6 +75,7 @@ public class login extends HttpServlet {
             session.setAttribute("username", " ");
             session.setAttribute("email", " ");
             session.setAttribute("userVidList", null);
+            session.setAttribute("userMsgList", null);
             session.setAttribute("Authenticated", false);
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();

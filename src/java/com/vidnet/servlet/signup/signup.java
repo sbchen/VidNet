@@ -74,7 +74,6 @@ public class signup extends HttpServlet {
             session.setAttribute("userid", tempUser.getUserID());
             session.setAttribute("username", tempUser.getUsername());
             session.setAttribute("email", tempUser.getEmail());
-            session.setAttribute("userVidList", videoModel.getVideos(tempUser));
             session.setAttribute("Authenticated", true);
             requestDispatch.forward(request, response);
         } else {
@@ -83,6 +82,7 @@ public class signup extends HttpServlet {
             session.setAttribute("username", " ");
             session.setAttribute("email", " ");
             session.setAttribute("userVidList", null);
+            session.setAttribute("userMsgList", null);
             session.setAttribute("Authenticated", false);
             PrintWriter out = response.getWriter();
             out.println("<h1>Sign up information is invalid!</h1>");
