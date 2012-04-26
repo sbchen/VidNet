@@ -106,12 +106,6 @@
 
 <br clear="all" />
 
-<!--<video width="320" height="240" controls="controls">
-    <source src="C:\VidNet\Uploads\test\test2007.mp4" type="video/mp4" />
-    Your browser does not support HTML5
-</video>-->
-
-
 <!-- navigator -->
 <div id="nav">
 <ul>

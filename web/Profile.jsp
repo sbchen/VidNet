@@ -92,7 +92,7 @@
         <tr>
             <td>
                 <div id="userVideo">
-                    <video width="320" height="240" controls="controls">
+                    <video width="640" height="480" controls="controls">
                         <source src="${vid.getLocation()}" type="video/mp4" />
                         Your browser does not support HTML5
                     </video>
