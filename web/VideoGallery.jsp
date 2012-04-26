@@ -59,7 +59,7 @@
         }
    %>
    <li><a href="Profile.jsp">Profile</a></li>
-   <li><a href="VideoGallery.jsp">Video Gallery</a></li>
+   <li><a href="VideoGalleryServlet">Video Gallery</a></li>
    <li><a href="sign-up.jsp">Sign Up</a></li>
    <li><a href="index.jsp">Home</a></li>
 </div><!-- close h_navcontainer -->
