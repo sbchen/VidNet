@@ -48,6 +48,10 @@
         <servlet-name>SendCommentServlet</servlet-name>
         <servlet-class>com.vidnet.servlet.comment.SendCommentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VideoGalleryServlet</servlet-name>
+        <servlet-class>com.vidnet.servlet.gallery.VideoGalleryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -75,6 +79,10 @@
     <servlet-mapping>
         <servlet-name>SendCommentServlet</servlet-name>
         <url-pattern>/SendCommentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VideoGalleryServlet</servlet-name>
+        <url-pattern>/VideoGalleryServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

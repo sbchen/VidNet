@@ -4,6 +4,7 @@
     Author     : Moy
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -82,40 +83,44 @@
 <p></p>
 <p></p>
 <div id="gallery">
-	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>
-                                   	<div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
-				                   <img src="photos/tb_1.jpg" alt="demo" /></a></div>  
-    
-    <a href="VideoPage.jsp">Video page link</a>
+    <c:forEach var="vid" items="${gallVidList}">
+        <div class="float_left_thumb"><a href='VideoServlet?videoid=${vid.getVideoID()}' title="${vid.getTitle()}"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    </c:forEach>
+<!--    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>
+    <div class="float_left_thumb"><a href='photos/1.jpg' title="Old Tree"  class="group" rel="group">
+            <img src="photos/tb_1.jpg" alt="demo" /></a></div>  
+                -->
+    <!--    <a href="VideoPage.jsp">Video page link</a>-->
 </div><!-- close gallery -->
 
 <div style="clear:both"></div>
