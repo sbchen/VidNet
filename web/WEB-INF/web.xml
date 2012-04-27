@@ -52,6 +52,14 @@
         <servlet-name>VideoGalleryServlet</servlet-name>
         <servlet-class>com.vidnet.servlet.gallery.VideoGalleryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddTagServlet</servlet-name>
+        <servlet-class>com.vidnet.sevlet.tag.AddTagServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TagSearchServlet</servlet-name>
+        <servlet-class>com.vidnet.sevlet.tag.TagSearchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -83,6 +91,14 @@
     <servlet-mapping>
         <servlet-name>VideoGalleryServlet</servlet-name>
         <url-pattern>/VideoGalleryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTagServlet</servlet-name>
+        <url-pattern>/AddTagServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TagSearchServlet</servlet-name>
+        <url-pattern>/TagSearchServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

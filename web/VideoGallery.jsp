@@ -70,12 +70,12 @@
 
 <h1>Gallery</h1>
 
-<form name="SearchBox">
+<form name="SearchBox" action="TagSearchServlet" method="post">
   <table width="400" border="1" cellpadding="5">
     <tr>
       <td>
         <input type="hidden" name="view" value="grid">
-        Search Videos:<input type="text" name="keyword" size="30" maxlength="50"><input type="submit" value="Search">
+        Search Videos:<input type="text" name="tag" size="30" maxlength="50"><input type="submit" value="Search">
       </td>
     </tr>
   </table>

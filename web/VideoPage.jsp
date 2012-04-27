@@ -5,7 +5,7 @@
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="java.util.LinkedList"%>
+<%@page import="java.util.LinkedList, com.vidnet.db.Tag"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -62,12 +62,12 @@ On: ${videoInfo.getDate()}
 </div>
 
 <div id="vidContainer">
-<video width="640" height="480" controls="controls">
-    <source src="${videoInfo.getPath()}" type="video/mp4" />
-    Your browser does not support HTML 5
-</video>
+    <video width="640" height="480" controls="controls">
+        <source src="${videoInfo.getPath()}" type="video/mp4" />
+        Your browser does not support HTML 5
+    </video>
 </div>
-    
+        
     <br />
     <br />
     
@@ -76,7 +76,40 @@ On: ${videoInfo.getDate()}
     <p>${videoInfo.getDesc()}</p>
 </div>
 
+<div id="vidTagContainer">
+    <h2>Tags: </h2>
+    <br />
+    <table>
+        <tr>
+        <%
+            if (session.getAttribute("vidTagList") == null || ((LinkedList)session.getAttribute("vidTagList")).isEmpty()) {
+                %>
+                No tags yet!
+                <%
+            } else {
+        %>
+        <c:forEach var="iter" items="${vidTagList}">
+            <td><a href="TagSearchServlet?tag=${iter.getTagName()}">${iter.getTagName()}</a>&nbsp;&nbsp;</td>
+        </c:forEach>
+        <%
+            }
+        %>
+        </tr>
+    </table>
+
+    <br />
+    <form action="AddTagServlet" method="post">
+        <input type="text" name="addTag" />
+        <input type="hidden" name="vidID" value="${videoInfo.getVideoID()}"/>
+        <br />
+        <input type="submit" value="Tag!" />
+    </form>
+    <br />
+</div>
+
 <div id="vidCommentContainer">
+    <h2>Comments: </h2>
+    
     <form action="SendCommentServlet" method="post">
         <textarea name="com" rows="3" cols="45"></textarea>
         <input type="hidden" name="vidID" value="${videoInfo.getVideoID()}"/>
@@ -86,8 +119,7 @@ On: ${videoInfo.getDate()}
         
     <br />
     <br />
-    
-    <h2>Comments: </h2>
+
     <table>
         <%
         if (session.getAttribute("vidComList") == null || ((LinkedList)session.getAttribute("vidComList")).isEmpty()) {
@@ -101,7 +133,7 @@ On: ${videoInfo.getDate()}
         } else {
         %>
         <tr>
-            <td>From   </td>
+            <td>From&nbsp;&nbsp;</td>
             <td>Content</td>
             <td>Posted</td>
         </tr>

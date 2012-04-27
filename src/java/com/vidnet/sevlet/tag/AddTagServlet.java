@@ -2,11 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vidnet.servlet.video;
+package com.vidnet.sevlet.tag;
 
-import com.vidnet.db.CommentModel;
-import com.vidnet.db.TagModel;
-import com.vidnet.db.VideoModel;
+import com.vidnet.db.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -20,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author SC
  */
-public class VideoServlet extends HttpServlet {
+public class AddTagServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -35,36 +33,27 @@ public class VideoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        int videoid = Integer.parseInt(request.getParameter("vidID"));
+        String dest = "/VideoServlet?videoid=" + videoid;
+        String tag = request.getParameter("addTag");
         
-        String dest = "/VideoPage.jsp";
-        int videoid = 0;
-        
-        VideoModel videoModel;
-        CommentModel comModel = new CommentModel();
-        TagModel tagModel = new TagModel();
-        
-        HttpSession session;
+        HttpSession session = request.getSession();
         RequestDispatcher rd;
         
-        session = request.getSession(false);
         rd = getServletContext().getRequestDispatcher(dest);
         
-        if (request.getParameter("videoid") != null) {
-            videoid = Integer.parseInt(request.getParameter("videoid"));
-        } else {
-            out.write("video does not exist!");
-        }
+        Tag tempTag;
+        TagModel tagModel = new TagModel();
+        User user;
         
-        if (videoid != 0) {
-            videoModel = new VideoModel();
-            session.setAttribute("videoInfo", videoModel.getAllInfo(videoid));
-            session.setAttribute("vidComList", comModel.getComments(videoid));
+        if (session.getAttribute("user") != null) {
+            user = (User)session.getAttribute("user");
+            tempTag = tagModel.addTag(tag, videoid);
             session.setAttribute("vidTagList", tagModel.getTagList(videoid));
+            rd.forward(request, response);
+        } else {
+            rd.forward(request, response);
         }
-        
-        rd.forward(request, response);
         
 //        response.setContentType("text/html;charset=UTF-8");
 //        PrintWriter out = response.getWriter();
@@ -74,10 +63,10 @@ public class VideoServlet extends HttpServlet {
 //             */
 //            out.println("<html>");
 //            out.println("<head>");
-//            out.println("<title>Servlet VideoServlet</title>");            
+//            out.println("<title>Servlet AddTagServlet</title>");            
 //            out.println("</head>");
 //            out.println("<body>");
-//            out.println("<h1>Servlet VideoServlet at " + request.getContextPath() + "</h1>");
+//            out.println("<h1>Servlet AddTagServlet at " + request.getContextPath() + "</h1>");
 //            out.println("</body>");
 //            out.println("</html>");
 //        } finally {            

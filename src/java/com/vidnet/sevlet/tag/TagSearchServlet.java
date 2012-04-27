@@ -2,9 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vidnet.servlet.video;
+package com.vidnet.sevlet.tag;
 
-import com.vidnet.db.CommentModel;
 import com.vidnet.db.TagModel;
 import com.vidnet.db.VideoModel;
 import java.io.IOException;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author SC
  */
-public class VideoServlet extends HttpServlet {
+public class TagSearchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -35,34 +34,17 @@ public class VideoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        String dest = "/VideoGallery.jsp";
+        String tag = request.getParameter("tag");
         
-        String dest = "/VideoPage.jsp";
-        int videoid = 0;
-        
-        VideoModel videoModel;
-        CommentModel comModel = new CommentModel();
         TagModel tagModel = new TagModel();
-        
         HttpSession session;
         RequestDispatcher rd;
         
         session = request.getSession(false);
         rd = getServletContext().getRequestDispatcher(dest);
         
-        if (request.getParameter("videoid") != null) {
-            videoid = Integer.parseInt(request.getParameter("videoid"));
-        } else {
-            out.write("video does not exist!");
-        }
-        
-        if (videoid != 0) {
-            videoModel = new VideoModel();
-            session.setAttribute("videoInfo", videoModel.getAllInfo(videoid));
-            session.setAttribute("vidComList", comModel.getComments(videoid));
-            session.setAttribute("vidTagList", tagModel.getTagList(videoid));
-        }
+        session.setAttribute("gallVidList", tagModel.searchTags(tag));
         
         rd.forward(request, response);
         
@@ -74,10 +56,10 @@ public class VideoServlet extends HttpServlet {
 //             */
 //            out.println("<html>");
 //            out.println("<head>");
-//            out.println("<title>Servlet VideoServlet</title>");            
+//            out.println("<title>Servlet TagSearchServlet</title>");            
 //            out.println("</head>");
 //            out.println("<body>");
-//            out.println("<h1>Servlet VideoServlet at " + request.getContextPath() + "</h1>");
+//            out.println("<h1>Servlet TagSearchServlet at " + request.getContextPath() + "</h1>");
 //            out.println("</body>");
 //            out.println("</html>");
 //        } finally {            

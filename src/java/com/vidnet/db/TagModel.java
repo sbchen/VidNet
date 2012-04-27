@@ -29,8 +29,17 @@ public class TagModel {
     LinkedList<Tag> tagList;
     
     //search tags for videos
-    public LinkedList<VideoContainer> SearchTags(LinkedList<String> tags) {
-        return null;
+    public LinkedList<Video> searchTags(String tags) {
+        LinkedList<Video> vidList = new LinkedList<Video>();
+        VideoModel vidModel = new VideoModel();
+        
+        tagList = getTaggedVideos(tags);
+        
+        for (Tag t : tagList) {
+            vidList.add(vidModel.getInfo(t.getVideoID()));
+        }
+        
+        return vidList;
     }
     
     //get all tags of a video
