@@ -54,11 +54,11 @@
     </servlet>
     <servlet>
         <servlet-name>AddTagServlet</servlet-name>
-        <servlet-class>com.vidnet.sevlet.tag.AddTagServlet</servlet-class>
+        <servlet-class>com.vidnet.servlet.tag.AddTagServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TagSearchServlet</servlet-name>
-        <servlet-class>com.vidnet.sevlet.tag.TagSearchServlet</servlet-class>
+        <servlet-class>com.vidnet.servlet.tag.TagSearchServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
